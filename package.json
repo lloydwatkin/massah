@@ -22,7 +22,8 @@
     "mocha": "1.X",
     "webdriverjs-helper": "1.X",
     "yadda": "0.X",
-
+    "selenium-webdriver": "2.X",
+    "glob": "3.X"
   },
   "author": "Lloyd Watkin",
   "license": "Apache 2.0",
