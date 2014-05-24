@@ -1,0 +1,33 @@
+{
+  "name": "Massa",
+  "version": "0.0.0",
+  "description": "BDD-style automated browser testing in node.js made very easy",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"No tests available\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git://github.com/lloydwatkin/massa.git"
+  },
+  "keywords": [
+    "bdd",
+    "automated",
+    "browser",
+    "testing",
+    "selenium",
+    "webdriver"
+  ],
+  "dependencies": {
+    "mocha": "1.X",
+    "webdriverjs-helper": "1.X",
+    "yadda": "0.X",
+
+  },
+  "author": "Lloyd Watkin",
+  "license": "Apache 2.0",
+  "bugs": {
+    "url": "https://github.com/lloydwatkin/massa/issues"
+  },
+  "homepage": "https://github.com/lloydwatkin/massa"
+}
