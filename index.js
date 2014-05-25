@@ -10,7 +10,7 @@ var driver, application, libraries
 
 var loadStepDefinitions = function() {
     var libraries = []
-    glob.sync(process.cwd() + 'test/steps/**/*.js', { cwd: __dirname }).forEach(function(stepDefinitionFile) {
+    glob.sync(process.cwd() + '/test/steps/**/*.js', { cwd: __dirname }).forEach(function(stepDefinitionFile) {
         libraries.push(require(stepDefinitionFile.replace('.js', '')))
     })
     return libraries
@@ -20,9 +20,7 @@ var stepDefinitions = loadStepDefinitions()
 
 new Yadda.FeatureFileSearch(process.cwd() + '/test/features').each(function(file) {
     featureFile(file, function(feature) {
-
-        featureRunOnly = feature.annotations.only ? true : false
-            
+  
         scenarios(feature.scenarios, function(scenario) {
             var stepNumber = 0
             var context = {}
@@ -30,20 +28,12 @@ new Yadda.FeatureFileSearch(process.cwd() + '/test/features').each(function(file
                 if (0 === stepNumber) {
                     context = { 
                         driver: driver, 
-                        application: application, 
-                        defaultUser: helper.user,
+                        application: application,
                         params: {}
                     }
-                    application.resetSocketEvents()
-                    if (scenario.annotations.events) {
-                        scenario.annotations.events.split(',').forEach(function(event) {
-                            application.addSocketEvents(
-                                require(process.cwd() + '/test/events/' + event)(context)
-                            )
-                        })
-                    } else {
-                        application.addSocketEvents(require(process.cwd() + 'test/events/standard')(context))
-                    }   
+
+                   // if (scenario.annotations.events) {
+   
                 }
                 executeInFlow(function() {
                     new Yadda.Yadda(
@@ -79,7 +69,7 @@ new Yadda.FeatureFileSearch(process.cwd() + '/test/features').each(function(file
 })
 
 function executeInFlow(fn, done) {
-    Webdriver.promise.controlFlow().execute(fn).then(function() {
+    webdriver.promise.controlFlow().execute(fn).then(function() {
         done()
     }, done)   
 }
