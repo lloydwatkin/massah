@@ -16,7 +16,7 @@ Making BDD style automated browser testing with node.js very simple...
 [![Build Status](https://travis-ci.org/lloydwatkin/massah.svg)](https://travis-ci.org/lloydwatkin/massah)
 
 # How to use
- ## Install
+## Install
   
 ```
 npm i --save-dev massah
