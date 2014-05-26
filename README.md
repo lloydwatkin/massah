@@ -33,6 +33,16 @@ In your project then create the following folder structure:
   
 __Features__ are where you write your BDD tests in plain text, __steps__ is where you  define these steps in code, and __screenshots__ are used to store screenshots of any failed test steps.
 
+  ## Running tests
+  
+```
+./node_modules/massah/bin/massah
+```
+
+You can set this to be used for `npm test` in your **package.json**.
+
+# Tests
+
   ## Writing features
  
 For an example of a feature file please see: [test/features/search.feature](https://github.com/lloydwatkin/massah/blob/master/test/features/search.feature)
