@@ -1,0 +1,2 @@
+./node_modules/massah/node_modules/mocha/bin/mocha -t 60000 ./node_modules/massah/index.js
+

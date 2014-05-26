@@ -1,6 +1,6 @@
 {
   "name": "massah",
-  "version": "0.0.4",
+  "version": "0.0.3",
   "description": "BDD-style automated browser testing in node.js made very easy",
   "main": "index.js",
   "scripts": {
@@ -26,10 +26,16 @@
     "glob": "3.X",
     "should": "3.X"
   },
-  "author": "Lloyd Watkin",
+  "author": {
+    "name": "Lloyd Watkin"
+  },
   "license": "Apache 2.0",
   "bugs": {
     "url": "https://github.com/lloydwatkin/massa/issues"
   },
-  "homepage": "https://github.com/lloydwatkin/massa"
+  "homepage": "https://github.com/lloydwatkin/massa",
+  "readme": "massah\n======\n\nMaking BDD style automated browser testing with node.js very simple\n",
+  "readmeFilename": "README.md",
+  "_id": "massah@0.0.3",
+  "_from": "massah@"
 }
