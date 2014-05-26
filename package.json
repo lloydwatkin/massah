@@ -8,7 +8,7 @@
   },
   "repository": {
     "type": "git",
-    "url": "git://github.com/lloydwatkin/massa.git"
+    "url": "git://github.com/lloydwatkin/massah.git"
   },
   "keywords": [
     "bdd",
@@ -31,9 +31,9 @@
   },
   "license": "Apache 2.0",
   "bugs": {
-    "url": "https://github.com/lloydwatkin/massa/issues"
+    "url": "https://github.com/lloydwatkin/massah/issues"
   },
-  "homepage": "https://github.com/lloydwatkin/massa",
+  "homepage": "https://github.com/lloydwatkin/massah",
   "readme": "massah\n======\n\nMaking BDD style automated browser testing with node.js very simple\n",
   "readmeFilename": "README.md",
   "_id": "massah@0.0.3",
