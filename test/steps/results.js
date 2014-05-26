@@ -1,4 +1,4 @@
-/* Normally you'd require('massah') here */
+/* Normally you'd require('massah/helper') here */
 var massah = require('../../helper')
 
 module.exports = (function() {

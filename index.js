@@ -22,7 +22,6 @@ var stepDefinitions = loadStepDefinitions()
 var featuresPath = process.cwd() + '/test/features'
 new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
     featureFile(file, function(feature) {
-  
         scenarios(feature.scenarios, function(scenario) {
             var stepNumber = 0
             var context = {}
