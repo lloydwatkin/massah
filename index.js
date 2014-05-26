@@ -5,12 +5,13 @@ var helper = require('./helper')
 
 Yadda.plugins.mocha.AsyncStepLevelPlugin.init()
 
-var webdriver = helper.Webdriver
-var driver, application, libraries
+var driver, libraries
 
 var loadStepDefinitions = function() {
     var libraries = []
-    glob.sync(process.cwd() + '/test/steps/**/*.js', { cwd: __dirname }).forEach(function(stepDefinitionFile) {
+    var stepsPath = process.cwd() + '/test/steps/**/*.js'
+    var options = { cwd: __dirname }
+    glob.sync(stepsPath, options).forEach(function(stepDefinitionFile) {
         libraries.push(require(stepDefinitionFile.replace('.js', '')))
     })
     return libraries
@@ -18,7 +19,8 @@ var loadStepDefinitions = function() {
 
 var stepDefinitions = loadStepDefinitions()
 
-new Yadda.FeatureFileSearch(process.cwd() + '/test/features').each(function(file) {
+var featuresPath = process.cwd() + '/test/features'
+new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
     featureFile(file, function(feature) {
   
         scenarios(feature.scenarios, function(scenario) {
@@ -28,12 +30,8 @@ new Yadda.FeatureFileSearch(process.cwd() + '/test/features').each(function(file
                 if (0 === stepNumber) {
                     context = { 
                         driver: driver, 
-                        application: application,
                         params: {}
                     }
-
-                   // if (scenario.annotations.events) {
-   
                 }
                 executeInFlow(function() {
                     new Yadda.Yadda(
@@ -69,7 +67,7 @@ new Yadda.FeatureFileSearch(process.cwd() + '/test/features').each(function(file
 })
 
 function executeInFlow(fn, done) {
-    webdriver.promise.controlFlow().execute(fn).then(function() {
+    helper.Webdriver.promise.controlFlow().execute(fn).then(function() {
         done()
     }, done)   
 }

@@ -1,13 +1,17 @@
 var Yadda = require('yadda')
   , Webdriver = require('selenium-webdriver')
-  , testHelper = require(process.cwd() + '/test/helper')
   , should = require('should')
 require('webdriverjs-helper')
 
-var port = 3001
+var testHelper = {}
+try {
+    testHelper = require(process.cwd() + '/test/helper')
+} catch (error) {
+    console.debug('No project test/helper.js found')
+}
 
 var getBrowser = function(done) {
-    var browserToUse = process.env.BROWSER || 'chrome'
+    var browserToUse = process.env.BROWSER || 'firefox'
     var browser, capabilities
     switch (browserToUse) {
         case 'phantomjs':
@@ -34,40 +38,21 @@ var getBrowser = function(done) {
         { port: 4444 }
     )
     server.start().then(function() {
-
-       /* var FirefoxProfile = require('firefox-profile')
-        var profile = new FirefoxProfile()
-        profile.setPreference('network.http.prompt-temp-redirect', false)
-        profile.setPreference('app.update.silent', true)
-        profile.encoded(function(profile) {*/
-            var browser = new Webdriver.Builder()
-                .usingServer(server.address())
-                .withCapabilities(capabilities)
-                .build()
-           // capabilities['firefox_profile'] = profile*/
-            browser.manage().timeouts().implicitlyWait(10000)
-            done(browser)
-       // })
+        var browser = new Webdriver.Builder()
+            .usingServer(server.address())
+            .withCapabilities(capabilities)
+            .build()
+        browser.manage().timeouts().implicitlyWait(10000)
+        done(browser)
     })
 }
 
 var startApplication = function(done) {
-    return done()
-    options = {
-       debug: false,
-       silent: ('development' === process.env.NODE_ENV) ? false : true,
-       site: 'http://localhost:' + port
-   }
-   var app = require(process.cwd() + '/test/helper')
-
-   app.server.listen(port, function() {
-      done(app)
-   })
+    done()
 }
 
 var stopApplication = function(done, application) {
     done()
-    //application.server.close(done)
 }
 
 var getLibrary = function(dictionary) {
@@ -80,8 +65,7 @@ module.exports = {
     getBrowser: getBrowser,
     application: {
         start: startApplication,
-        stop: stopApplication,
-        port: port
+        stop: stopApplication
     },
     Webdriver: Webdriver,
     getLibrary: getLibrary
