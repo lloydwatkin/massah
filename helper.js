@@ -7,7 +7,7 @@ var testHelper = {}
 try {
     testHelper = require(process.cwd() + '/test/helper')
 } catch (error) {
-    console.debug('No project test/helper.js found')
+    console.log('No project test/helper.js found')
 }
 
 var getBrowser = function(done) {
