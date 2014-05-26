@@ -82,13 +82,15 @@ module.exports = (function() {
 })()
 ```
 
+Also see the helper functions in [webdriverjs-helper](https://github.com/surevine/webdriverjs-helper) for some extra usefulness.
+
 ## Sharing data between tests
 
 As you can see from the example above data can be shared between test steps using the `params` object.  This object is cleaned with each new test scenario, but can be used for sharing data in between tests.
 
 # Name
 
-The name `massah` comes from the fantasy fiction novel called 'The Torah', and its cumulative sequel 'The Bible'. During the chapter titled 'Exodus' the Israelite people are being led out of Egypt. At one point they begin to worry about their lack of water/supplies/etc. Their leader a character named Moses gets a little miffed at them for daring to question the wisdom of the "sky man" for sending them on the journey.  This place was then named `Massah` which basically means __to test__.
+The name `massah` comes from the fantasy fiction novel called 'The Torah' and its cumulative sequel 'The Bible'. During the chapter titled 'Exodus' the Israelite people are being led out of Egypt. At one point they begin to worry about their lack of water/supplies/etc. Their leader, a character named Moses, gets a little miffed at them for daring to question the wisdom of the "sky man" for sending them on the journey.  This place was then named `Massah` which basically means __to test__.
 
 # Licence
 
