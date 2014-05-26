@@ -1,6 +1,6 @@
 {
   "name": "massah",
-  "version": "0.0.3",
+  "version": "1.0.0",
   "description": "BDD-style automated browser testing in node.js made very easy",
   "main": "index.js",
   "scripts": {
