@@ -34,7 +34,7 @@ var getBrowser = function(done) {
 
     SeleniumServer = require('selenium-webdriver/remote').SeleniumServer
     var server = new SeleniumServer(
-        'resources/selenium-server-standalone-2.39.0.jar',
+        __dirname + '/resources/selenium-server-standalone-2.39.0.jar',
         { port: 4444 }
     )
     server.start().then(function() {
