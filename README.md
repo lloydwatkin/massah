@@ -51,7 +51,7 @@ After this please read the [Yadda guide](https://github.com/acuminous/yadda#step
 
 ## Writing steps
 
-For an example of a feature file please see: [test/steps/url.js](https://github.com/lloydwatkin/massah/blob/master/test/steps/url.js)
+For an example of a step definition file please see: [test/steps/url.js](https://github.com/lloydwatkin/massah/blob/master/test/steps/url.js)
 
 After this please read the [Yadda guide](https://github.com/acuminous/yadda#step-3---implement-the-step-library)
  
