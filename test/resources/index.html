@@ -1,0 +1,27 @@
+<html>
+    <head>
+    <title>Massah test page</title>
+    <script type="text/javascript">
+    window.onload = function() {
+        document.getElementById('massah-button').onclick = function() {
+            var li = document.createElement('li')
+            li.appendChild(
+               document.createTextNode(
+                   document.getElementById('label').value
+               )
+            )
+            document.getElementById('options').appendChild(li)
+            document.getElementById('label').value = ''
+        }
+    }
+    </script>
+    </head>
+    <body>
+    <h1>Massah test page</h1>
+    <label for="label">Option value:</label> <input type="text" id="label" />
+    <button id="massah-button">Add Option</button>
+    <ul id="options">
+        <li>Option 1</li>    
+    </ul>
+    </body>
+</html>
