@@ -3,8 +3,8 @@ var massah = require('../../../helper')
 
 module.exports = (function() {
     var library = massah.getLibrary()
-        .when('I click the search button', function(label) {
-            this.driver.element('button[name="btnG"]').click()
+        .when('I click the \'(.*)\' button', function(label) {
+            this.driver.button(label).click()
         })
     
     return library

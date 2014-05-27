@@ -48,11 +48,13 @@ var getBrowser = function(done) {
 }
 
 var startApplication = function(done) {
-    done()
+    if (!testHelper.startApplication) return done()
+    testHelper.startApplication(done)
 }
 
 var stopApplication = function(done, application) {
-    done()
+    if (!testHelper.stopApplication) return done()
+    testHelper.stopApplication(done)
 }
 
 var getLibrary = function(dictionary) {
@@ -65,7 +67,8 @@ module.exports = {
     getBrowser: getBrowser,
     application: {
         start: startApplication,
-        stop: stopApplication
+        stop: stopApplication,
+        helper: testHelper
     },
     Webdriver: Webdriver,
     getLibrary: getLibrary
