@@ -24,7 +24,8 @@
     "yadda": "0.X",
     "selenium-webdriver": "2.X",
     "glob": "3.X",
-    "should": "3.X"
+    "should": "3.X",
+    "yargs": "^1.2.2"
   },
   "author": {
     "name": "Lloyd Watkin"
