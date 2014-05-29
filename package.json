@@ -4,7 +4,7 @@
   "description": "BDD-style automated browser testing in node.js made very easy",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --timeout=60000 index.js"
+    "test": "./node_modules/mocha/bin/mocha --timeout=60000 --reporter spec --ui tdd index.js"
   },
   "repository": {
     "type": "git",

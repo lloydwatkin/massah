@@ -19,8 +19,15 @@ var stopApplication = function(done) {
     done()
 }
 
+var beforeScenario = function(annotations, context) {
+    if (annotations.option) {
+        context.params.newOption = annotations.option
+    }
+}
+
 module.exports = {
     startApplication: startApplication,
     stopApplication: stopApplication,
+    beforeScenario: beforeScenario,
     port: port
 }

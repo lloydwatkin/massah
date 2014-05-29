@@ -84,10 +84,10 @@ module.exports = (function() {
 ```
 
 Also see the helper functions in [webdriverjs-helper](https://github.com/surevine/webdriverjs-helper) for some extra usefulness.
+
 ## Sharing data between tests
 
 As you can see from the example above data can be shared between test steps using the `params` object.  This object is cleaned with each new test scenario, but can be used for sharing data in between tests.
-
 
 ## Starting / Stopping / Accessing your application from Massah
 
@@ -102,6 +102,25 @@ If your helper exports a ```startApplication``` method then this will be called 
 ### Stopping your application
 
 If your helper exports a ```stopApplication``` method then this will be called and passed a callback parameter. The callback should be called when your application has completed closing down.
+
+### Accessing your application
+
+If your helper exports a ```beforeScenario``` method then this will be called at the beginning of a scenario. This allows you 
+to set up spies/mocks/etc as required for each test.
+
+The first argument to this method is the __annotations__ object 
+which contains any annotations added to the feature or scenario. The second argument is the __context__ object allowing you to set 
+data which will be available to each of the test steps. The context object exists as follows: 
+
+```javascript
+{
+    driver: /* browser */
+    params: {}  /* Location to store shared data */
+    application: /* The exports from your application test helper */
+}
+```
+
+For an example of annotations being used please see the annotation override test in __Massah__.
 
 # Testing
 

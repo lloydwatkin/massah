@@ -29,8 +29,14 @@ new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
                 if (0 === stepNumber) {
                     context = { 
                         driver: driver, 
-                        params: {}
+                        params: {},
+                        application: helper.application
                     }
+                    if (helper.application.helper.beforeScenario) {
+                        helper.application.helper.beforeScenario(
+                            scenario.annotations, context
+                        )
+                    }  
                 }
                 executeInFlow(function() {
                     new Yadda.Yadda(
