@@ -32,8 +32,8 @@ new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
                         params: {},
                         application: helper.application
                     }
-                    if (helper.application.beforeScenario) {
-                        helper.application.beforeScenario(
+                    if (helper.application.helper.beforeScenario) {
+                        helper.application.helper.beforeScenario(
                             scenario.annotations, context
                         )
                     }  
