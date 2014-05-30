@@ -30,8 +30,8 @@
     "selenium-webdriver": "2.X",
     "glob": "3.X",
     "should": "3.X",
-    "yargs": "^1.2.2",
-    "colours": "^0.6.0-2"
+    "yargs": "1.X",
+    "colours": "0.X"
   },
   "author": {
     "name": "Lloyd Watkin"
