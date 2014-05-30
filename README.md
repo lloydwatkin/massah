@@ -18,10 +18,12 @@ __Massah__ is essentially a wrapper around the following projects just making th
 # How to use
 
 ## Install
-  
+
 ```
-npm i -g massah
+npm i --save-dev massah
 ```
+
+To access cli tools you can install __Massah__ globally, or access them in ```./node_modules/.bin/massah*```.
 
 ## Set up
   
