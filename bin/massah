@@ -1,1 +1,2 @@
-./node_modules/mocha/bin/mocha --reporter spec --ui tdd --timeout 60000 ./node_modules/massah/index.js
+echo "Not implemented yet... sorry!"
+exit 1

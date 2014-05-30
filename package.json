@@ -18,6 +18,10 @@
     "selenium",
     "webdriver"
   ],
+  "bin": {
+    "massah": "./bin/massah",
+    "massah-test": "./bin/massah-test"
+  },
   "dependencies": {
     "mocha": "1.X",
     "webdriverjs-helper": "1.X",

@@ -20,7 +20,7 @@ __Massah__ is essentially a wrapper around the following projects just making th
 ## Install
   
 ```
-npm i --save-dev massah
+npm i -g massah
 ```
 
 ## Set up
@@ -34,10 +34,12 @@ In your project then create the following folder structure:
   
 __Features__ are where you write your BDD tests in plain text, __steps__ is where you  define these steps in code, and __screenshots__ are used to store screenshots of any failed test steps.
 
+  In a later version there'll be an **init** script for this, but not yet... sorry!
+  
 ## Running tests
   
 ```
-./node_modules/massah/bin/massah
+massah-test
 ```
 
 You can set this to be used for `npm test` in your **package.json**.
