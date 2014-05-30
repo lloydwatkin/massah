@@ -1,2 +1,3 @@
 node_modules
 test/screenshots/*.png
+npm-debug.log
