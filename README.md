@@ -1,7 +1,27 @@
 Massah
 ======
 
-Making BDD style automated browser testing with node.js very simple...
+Making BDD style automated browser testing with node.js very simple. Get running automated browser tests within 5 minutes.
+
+- [Introduction](#introduction)
+- [Build Status](#build-status)
+- [How to use](#how-to-use)
+  - [Install](#install)
+  - [Set up](#set-up)
+  - [Running tests](#running-tests)
+- [Tests](#tests)
+  - [Writing features](#writing-features)
+  - [Writing steps](#writing-steps)
+  - [Sharing data between tests](#sharing-data-between-tests)
+  - [Starting / Stopping / Accessing your application from massah](#starting--stopping--accessing-your-application-from-massah)
+    - [Starting your application](#starting-your-application)
+    - [Stopping your application](#stopping-your-application)
+    - [Accessing your application](#accessing-your-application)
+- [Testing](#testing)
+- [Name](#name)
+- [Licence](#licence)
+
+# Introduction
 
 __Massah__ is essentially a wrapper around the following projects just making things a few steps easier for developers to run up a BDD-style automated browser testing setup.
 
