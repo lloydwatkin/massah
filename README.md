@@ -41,7 +41,7 @@ __Features__ are where you write your BDD tests in plain text, __steps__ is wher
 ## Running tests
   
 ```
-massah-test
+massah test
 ```
 
 You can set this to be used for `npm test` in your **package.json**.
