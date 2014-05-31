@@ -7,7 +7,11 @@ console.log('\n - Welcome to Massah\n'.blue)
 
 try {
     if (!command) command = 'help'
+    command = !command ? 'help' : command.replace(/[^a-z]/i, '').toLowerCase()
     require('./commands/' + command)(yargs)
 } catch (e) {
-    console.log(('Command \'' + command + '\' not found, use \'massah help\' for commands').red)
+    var message = 'Command \'' + command + '\' not found, use ' +
+        '\'massah help\' for commands'
+    console.log(message.red)
+    console.log(e)
 }

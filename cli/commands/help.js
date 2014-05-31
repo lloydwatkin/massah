@@ -4,7 +4,7 @@ require('colours')
 module.exports = function(yargs) {
     
     var specific = yargs.argv._[1]
-    console.log('Help\n'.green)
+    console.log('Help\n'.green.underline)
     
     if (specific) {
         try {
