@@ -81,7 +81,7 @@ massah help
 
 ## Writing features
  
-For an example of a feature file please see: [test/features/search.feature](https://github.com/lloydwatkin/massah/blob/master/test/features/search.feature)
+For an example of a feature file please see: [test/features/add-option.feature](https://github.com/lloydwatkin/massah/blob/master/test/features/add-option.feature)
 
 After this please read the [Yadda guide](https://github.com/acuminous/yadda#step-2---write-your-first-scenario)
 
