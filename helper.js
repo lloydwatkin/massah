@@ -52,7 +52,7 @@ var startApplication = function(done) {
     testHelper.startApplication(done)
 }
 
-var stopApplication = function(done, application) {
+var stopApplication = function(done) {
     if (!testHelper.stopApplication) return done()
     testHelper.stopApplication(done)
 }

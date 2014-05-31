@@ -54,9 +54,7 @@ new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
         })
 
         after(function(done) {
-            driver.quit().then(function() {
-                helper.application.stop(done, application)
-            })
+            afterFeature(done)
         })
         
         before(function(done) {
@@ -86,3 +84,22 @@ function takeScreenshotOnFailure(test) {
         })
     }
 }
+
+var afterFeature = function(done) {
+    if (!driver)
+        return helper.application.stop(done)
+    driver.quit().then(function() {
+        helper.application.stop(done)
+    })
+}
+
+process.on('SIGINT', function() {
+    afterFeature(function() {
+        process.exit(1)
+    })
+})
+process.on('SIGTERM', function() {
+    afterFeature(function() {
+        process.exit(1)
+    })
+})
