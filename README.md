@@ -7,8 +7,9 @@ Making BDD style automated browser testing with node.js very simple. Get running
 - [Build Status](#build-status)
 - [How to use](#how-to-use)
   - [Install](#install)
-  - [Set up](#set-up)
+  - [Getting started](#getting-started)
   - [Running tests](#running-tests)
+  - [Getting help](#getting-help)
 - [Tests](#tests)
   - [Writing features](#writing-features)
   - [Writing steps](#writing-steps)
@@ -45,9 +46,13 @@ npm i --save-dev massah
 
 To access cli tools you can install __Massah__ globally, or access them in ```./node_modules/.bin/massah*```.
 
-## Set up
-  
-In your project then create the following folder structure:
+## Getting started
+
+```bash
+massah init
+```
+
+This command initializes your project creating the following folder structure (if not present):
 
 - test
   - features
@@ -56,7 +61,7 @@ In your project then create the following folder structure:
   
 __Features__ are where you write your BDD tests in plain text, __steps__ is where you  define these steps in code, and __screenshots__ are used to store screenshots of any failed test steps.
 
-  In a later version there'll be an **init** script for this, but not yet... sorry!
+Additionally an empty helper file is installed at ```test/helper.js``` this is not necessary but can be used later.
   
 ## Running tests
   
@@ -65,6 +70,12 @@ massah test
 ```
 
 You can set this to be used for `npm test` in your **package.json**.
+
+## Getting help
+
+```
+massah help
+```
 
 # Tests
 
