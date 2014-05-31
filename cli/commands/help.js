@@ -9,7 +9,10 @@ module.exports = function(yargs) {
     if (specific) {
         try {
             specific = specific.replace(/[^a-z]/i, '').toLowerCase()
-            return require('./help/' + specific).advanced(yargs)
+            var command = require('./help/' + specific)
+            console.log(('    - massah ' + command.name + '\n').blue)
+            console.log(command.description)
+            return
         } catch (e) {
             return console.log(
                 ('Unknown command \'' + specific + '\', use \'massah help\' for commands').red
@@ -21,7 +24,8 @@ module.exports = function(yargs) {
         'massah help <command>\n'.blue
     )
     glob.sync(__dirname + '/help/*').forEach(function(helpFile) {
-        require(helpFile).basic(yargs)
+        command = require(helpFile)
+        console.log((command.name + ': ').blue + command.summary)
     }, this)
     console.log()
 }
