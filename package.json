@@ -18,7 +18,6 @@
     "selenium",
     "webdriver"
   ],
-  "preferGlobal": "true",
   "bin": {
     "massah": "./bin/massah",
     "massah-test": "./bin/massah-test"
