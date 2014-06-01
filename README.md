@@ -9,6 +9,7 @@ Making BDD style automated browser testing with node.js very simple. Get running
   - [Install](#install)
   - [Getting started](#getting-started)
   - [Running tests](#running-tests)
+    - [Browsers](#browsers)
   - [Getting help](#getting-help)
 - [Tests](#tests)
   - [Writing features](#writing-features)
@@ -70,6 +71,24 @@ massah test
 ```
 
 You can set this to be used for `npm test` in your **package.json**.
+
+### Browsers
+
+__Massah__ is set up to use three different browser at present (adding more is rather simple). By default __Firefox__ is used. Browsers available to use at present are:
+
+- Firefox (__firefox_)
+- Phantomjs (_phantomjs___) **requires install of phantomjs**
+- Chrome
+  - Remotely (__chrome-remote__)
+  - Using [chromedriver](https://code.google.com/p/selenium/wiki/ChromeDriver) (__chrome__) **must be in path**
+
+To switch browser simply set an environment variable of __BROWSER__ set to one of the bold values above. For example,
+
+```bash
+BROWSER=chrome-remote massah test
+```
+
+If you require additional browsers immediately please make a pull request or raise an issue.
 
 ## Getting help
 
