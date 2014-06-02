@@ -49,7 +49,7 @@ var startServer = function(done, display) {
     }
 
     SeleniumServer = require('selenium-webdriver/remote').SeleniumServer
-    process.env.DISPLAY = ':' + display
+    if (display) process.env.DISPLAY = ':' + display
     var server = new SeleniumServer(
         __dirname + '/resources/selenium-server-standalone-2.39.0.jar',
         { port: 4444 }
