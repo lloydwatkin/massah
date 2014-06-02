@@ -19,8 +19,7 @@
     "webdriver"
   ],
   "bin": {
-    "massah": "./bin/massah",
-    "massah-test": "./bin/massah-test"
+    "massah": "./bin/massah"
   },
   "dependencies": {
     "mocha": "1.X",
