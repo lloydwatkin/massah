@@ -88,6 +88,10 @@ To switch browser simply set an environment variable of __BROWSER__ set to one o
 BROWSER=chrome-remote massah test
 ```
 
+Options:
+
+- ```--headless```: Run tests headlessly
+
 If you require additional browsers immediately please make a pull request or raise an issue.
 
 ## Getting help
