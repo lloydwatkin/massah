@@ -1,10 +1,10 @@
 var glob = require('glob')
   , colours = require('colours')
   , Mocha = require('mocha')
+  , helper = require('../../helper')
 
-module.exports = function(yargs) {
-
-    var mocha = new Mocha({
+var run = function() {
+     var mocha = new Mocha({
         timeout: 60000,
         reporter: 'spec'
     })

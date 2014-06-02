@@ -10,6 +10,8 @@ try {
     console.log('No project test/helper.js found')
 }
 
+var runOptions = {}
+
 var getBrowser = function(done) {
     var browserToUse = process.env.BROWSER || 'firefox'
     var browser, capabilities
@@ -62,6 +64,13 @@ var getLibrary = function(dictionary) {
     return library
 }
 
+var setOption = function(name, value) {
+    if (typeof name === 'object') {
+        return runOptions = name
+    }
+    runOptions[name] = value
+}
+
 module.exports = {
     Yadda: Yadda,
     getBrowser: getBrowser,
@@ -71,5 +80,6 @@ module.exports = {
         helper: testHelper
     },
     Webdriver: Webdriver,
-    getLibrary: getLibrary
+    getLibrary: getLibrary,
+    setOption: setOption
 }
