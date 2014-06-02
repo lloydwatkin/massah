@@ -29,7 +29,8 @@
     "glob": "3.X",
     "should": "3.X",
     "yargs": "1.X",
-    "colours": "0.X"
+    "colours": "0.X",
+    "headless": "0.X"
   },
   "author": {
     "name": "Lloyd Watkin"

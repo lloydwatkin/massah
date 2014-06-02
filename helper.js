@@ -1,6 +1,8 @@
 var Yadda = require('yadda')
   , Webdriver = require('selenium-webdriver')
   , should = require('should')
+  , headless = require('headless')
+
 require('webdriverjs-helper')
 
 var testHelper = {}
@@ -10,8 +12,21 @@ try {
     console.log('No project test/helper.js found')
 }
 
+var runOptions = {}
+
 var getBrowser = function(done) {
-    var browserToUse = process.env.BROWSER || 'firefox'
+
+    if (!runOptions.headless) return startServer(done)
+    headless(function(error, childProcess, serverNumber) {
+        console.log('Xvfb running on server number ' + serverNumber)
+        console.log('Xvfb PID ' + childProcess.pid)
+        startServer(done, serverNumber)
+    })
+}
+
+var startServer = function(done, display) {
+
+    var browserToUse = runOptions.browser || process.env.BROWSER || 'firefox'
     var browser, capabilities
     switch (browserToUse) {
         case 'phantomjs':
@@ -25,14 +40,16 @@ var getBrowser = function(done) {
             break  
         case 'chrome':
         default:
+            capabilities = Webdriver.Capabilities.chrome()
             var browser = new Webdriver.Builder()
-                .withCapabilities(Webdriver.Capabilities.chrome())
+                .withCapabilities(capabilities)
                 .build()
             done(browser)
             return
     }
 
     SeleniumServer = require('selenium-webdriver/remote').SeleniumServer
+    if (display) process.env.DISPLAY = ':' + display
     var server = new SeleniumServer(
         __dirname + '/resources/selenium-server-standalone-2.39.0.jar',
         { port: 4444 }
@@ -62,6 +79,13 @@ var getLibrary = function(dictionary) {
     return library
 }
 
+var setOption = function(name, value) {
+    if (typeof name === 'object') {
+        return runOptions = name
+    }
+    runOptions[name] = value
+}
+
 module.exports = {
     Yadda: Yadda,
     getBrowser: getBrowser,
@@ -71,5 +95,6 @@ module.exports = {
         helper: testHelper
     },
     Webdriver: Webdriver,
-    getLibrary: getLibrary
+    getLibrary: getLibrary,
+    setOption: setOption
 }
