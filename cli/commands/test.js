@@ -15,3 +15,11 @@ var run = function() {
         process.exit(failures || 0)
     })
 }
+
+module.exports = function(yargs) {
+
+    yargs.boolean('headless')
+
+    helper.setOption('headless', yargs.argv.headless) 
+    return run()   
+}
