@@ -13,18 +13,18 @@ try {
 }
 
 var runOptions = {}
+var xvfbServer = null
 
 var getBrowser = function(done) {
 
-    if (!runOptions.headless) return startServer(done)
+    if (!runOptions.headless || xvfbServer) return startServer(done)
     headless(function(error, childProcess, serverNumber) {
-        console.log('Xvfb running on server number ' + serverNumber)
-        console.log('Xvfb PID ' + childProcess.pid)
-        startServer(done, serverNumber)
+        xvfbServer = serverNumber
+        startServer(done)
     })
 }
 
-var startServer = function(done, display) {
+var startServer = function(done) {
 
     var browserToUse = runOptions.browser || process.env.BROWSER || 'firefox'
     var browser, capabilities
@@ -49,7 +49,7 @@ var startServer = function(done, display) {
     }
 
     SeleniumServer = require('selenium-webdriver/remote').SeleniumServer
-    if (display) process.env.DISPLAY = ':' + display
+    if (xvfbServer) process.env.DISPLAY = ':' + xvfbServer
     var server = new SeleniumServer(
         __dirname + '/resources/selenium-server-standalone-2.39.0.jar',
         { port: 4444 }
