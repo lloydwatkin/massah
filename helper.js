@@ -2,6 +2,8 @@ var Yadda = require('yadda')
   , Webdriver = require('selenium-webdriver')
   , should = require('should')
   , headless = require('headless')
+  , path = require('path')
+  , uname = require('uname').uname
 
 require('webdriverjs-helper')
 
@@ -24,6 +26,18 @@ var getBrowser = function(done) {
     })
 }
 
+var addChromeDriverToPath = function() {
+    var envPath = process.env.PATH.split(path.delimiter)
+    var arch = ('x64' === process.arch) ? 'x86_64' : 'i386'
+    var system = uname().sysname
+    var chromeDriverPath = __dirname +
+        '/resources/chromedriver/' +
+        system + '-' + arch
+    if (-1 !== envPath.indexOf(chromeDriverPath)) return
+    envPath.push(chromeDriverPath)
+    process.env.PATH = envPath.join(path.delimiter)
+}
+
 var startServer = function(done) {
 
     var browserToUse = runOptions.browser || process.env.BROWSER || 'firefox'
@@ -36,6 +50,7 @@ var startServer = function(done) {
             break
         case 'chromedriver':
             capabilities = Webdriver.Capabilities.chrome()
+            addChromeDriverToPath()
             var browser = new Webdriver.Builder()
                 .withCapabilities(capabilities)
                 .build()

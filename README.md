@@ -79,13 +79,13 @@ __Massah__ is set up to use three different browser at present (adding more is r
 - Firefox (__firefox_)
 - Phantomjs (_phantomjs___) **requires install of phantomjs**
 - Chrome
-  - Remotely (__chrome-remote__)
-  - Using [chromedriver](https://code.google.com/p/selenium/wiki/ChromeDriver) (__chrome__) **must be in path**
+  - Remotely (__chrome__)
+  - Using [chromedriver](https://code.google.com/p/selenium/wiki/ChromeDriver) (__chromedriver__)
 
 To switch browser simply set an environment variable of __BROWSER__ set to one of the bold values above. For example,
 
 ```bash
-BROWSER=chrome-remote massah test
+BROWSER=chromedriver massah test
 ```
 
 Options:
