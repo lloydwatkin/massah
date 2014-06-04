@@ -76,8 +76,8 @@ You can set this to be used for `npm test` in your **package.json**.
 
 __Massah__ is set up to use three different browser at present (adding more is rather simple). By default __Firefox__ is used. Browsers available to use at present are:
 
-- Firefox (__firefox_)
-- Phantomjs (_phantomjs___) **requires install of phantomjs**
+- Firefox (__firefox__)
+- Phantomjs (__phantomjs__) **requires install of phantomjs**
 - Chrome
   - Remotely (__chrome__)
   - Using [chromedriver](https://code.google.com/p/selenium/wiki/ChromeDriver) (__chromedriver__)
