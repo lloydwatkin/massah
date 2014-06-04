@@ -29,23 +29,20 @@ var startServer = function(done) {
     var browserToUse = runOptions.browser || process.env.BROWSER || 'firefox'
     var browser, capabilities
     switch (browserToUse) {
-        case 'phantomjs':
-            capabilities = Webdriver.Capabilities.phantomjs()
-            break
-        case 'firefox':
-            capabilities = Webdriver.Capabilities.firefox()
-            break
-        case 'chrome-remote':
-            capabilities = Webdriver.Capabilities.chrome()
-            break  
         case 'chrome':
-        default:
+        case 'phantomjs':
+        case 'firefox':
+            capabilities = Webdriver.Capabilities[browserToUse]()
+            break
+        case 'chromedriver':
             capabilities = Webdriver.Capabilities.chrome()
             var browser = new Webdriver.Builder()
                 .withCapabilities(capabilities)
                 .build()
             done(browser)
             return
+        default:
+            throw new Error('Unknown browser ' + browserToUse)
     }
 
     SeleniumServer = require('selenium-webdriver/remote').SeleniumServer
