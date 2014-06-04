@@ -42,7 +42,7 @@ var getBrowser = function(done) {
             .usingServer(server.address())
             .withCapabilities(capabilities)
             .build()
-        browser.manage().timeouts().implicitlyWait(10000)
+        browser.manage().timeouts().implicitlyWait(1000)
         done(browser)
     })
 }
