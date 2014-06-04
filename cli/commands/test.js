@@ -1,10 +1,10 @@
 var glob = require('glob')
   , colours = require('colours')
   , Mocha = require('mocha')
+  , helper = require('../../helper')
 
-module.exports = function(yargs) {
-
-    var mocha = new Mocha({
+var run = function() {
+     var mocha = new Mocha({
         timeout: 60000,
         reporter: 'spec'
     })
@@ -14,4 +14,12 @@ module.exports = function(yargs) {
     mocha.run(function(failures) {
         process.exit(failures || 0)
     })
+}
+
+module.exports = function(yargs) {
+
+    yargs.boolean('headless')
+
+    helper.setOption('headless', yargs.argv.headless) 
+    return run()   
 }

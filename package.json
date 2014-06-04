@@ -1,6 +1,6 @@
 {
   "name": "massah",
-  "version": "1.9.2",
+  "version": "1.10.1",
   "description": "BDD-style automated browser testing in node.js made very easy",
   "main": "index.js",
   "scripts": {
@@ -29,7 +29,8 @@
     "glob": "3.X",
     "should": "3.X",
     "yargs": "1.X",
-    "colours": "0.X"
+    "colours": "0.X",
+    "headless": "0.X"
   },
   "author": {
     "name": "Lloyd Watkin"
