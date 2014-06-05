@@ -4,7 +4,7 @@
   "description": "BDD-style automated browser testing in node.js made very easy",
   "main": "index.js",
   "scripts": {
-    "test": "mkdir -p node_modules/massah && rsync -av --progress . ./node_modules/massah --exclude node_modules && npm rebuild && massah test"
+    "test": "mkdir -p node_modules/massah && rsync -av --progress . ./node_modules/massah --exclude node_modules 1>/dev/null && npm rebuild 1>/dev/null && massah test"
   },
   "repository": {
     "type": "git",
