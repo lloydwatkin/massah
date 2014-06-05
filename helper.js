@@ -14,14 +14,16 @@ try {
     console.log('No project test/helper.js found')
 }
 
-var runOptions = {}
-var xvfbServer = null
+var runOptions = {
+   xvfbServer: null,
+   port: 4444
+}
 
 var getBrowser = function(done) {
 
-    if (!runOptions.headless || xvfbServer) return startServer(done)
+    if (!runOptions.headless || runOptions.xvfbServer) return startServer(done)
     headless(function(error, childProcess, serverNumber) {
-        xvfbServer = serverNumber
+        setOption('xvfbServer', serverNumber)
         startServer(done)
     })
 }
@@ -46,6 +48,7 @@ var startServer = function(done) {
         case 'chrome':
         case 'phantomjs':
         case 'firefox':
+        case 'opera':
             capabilities = Webdriver.Capabilities[browserToUse]()
             break
         case 'chromedriver':
@@ -59,16 +62,17 @@ var startServer = function(done) {
         default:
             throw new Error('Unknown browser ' + browserToUse)
     }
-
-    SeleniumServer = require('selenium-webdriver/remote').SeleniumServer
-    if (xvfbServer) process.env.DISPLAY = ':' + xvfbServer
-    var server = new SeleniumServer(
-        __dirname + '/resources/selenium-server-standalone-2.39.0.jar',
-        { port: 4444 }
-    )
-    server.start().then(function() {
+    
+    var runner = null
+    try {
+        runner = require('./cli/commands/test/runners/' + runOptions.runner)
+    } catch (e) {
+        runner = require('./cli/commands/test/runners/vanilla')
+    }
+    
+    runner.startServer(capabilities, runOptions, function() {
         var browser = new Webdriver.Builder()
-            .usingServer(server.address())
+            .usingServer(runOptions.serverAddress)
             .withCapabilities(capabilities)
             .build()
         browser.manage().timeouts().implicitlyWait(1000)
