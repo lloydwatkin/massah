@@ -1,5 +1,4 @@
-/* Normally you'd require('massah/helper') here */
-var massah = require('../../../helper')
+var massah = require('massah/helper')
 
 module.exports = (function() {
     var library = massah.getLibrary()
