@@ -4,7 +4,7 @@
   "description": "BDD-style automated browser testing in node.js made very easy",
   "main": "index.js",
   "scripts": {
-    "test": "./node_modules/mocha/bin/mocha --timeout=60000 --reporter spec --ui tdd index.js"
+    "test": "mkdir -p node_modules/massah && rsync -av --progress . ./node_modules/massah --exclude node_modules && npm rebuild && massah test"
   },
   "repository": {
     "type": "git",
