@@ -16,7 +16,19 @@
     "browser",
     "testing",
     "selenium",
-    "webdriver"
+    "webdriver",
+    "browserstack",
+    "chrome",
+    "firefox",
+    "phantomjs",
+    "safari",
+    "ie",
+    "internet explorer",
+    "e2e",
+    "automation",
+    "test",
+    "tests",
+    "integration tests"
   ],
   "bin": {
     "massah": "./bin/massah"
@@ -41,9 +53,5 @@
   "bugs": {
     "url": "https://github.com/lloydwatkin/massah/issues"
   },
-  "homepage": "https://github.com/lloydwatkin/massah",
-  "readme": "massah\n======\n\nMaking BDD style automated browser testing with node.js very simple\n",
-  "readmeFilename": "README.md",
-  "_id": "massah@0.0.3",
-  "_from": "massah@"
+  "homepage": "https://github.com/lloydwatkin/massah"
 }
