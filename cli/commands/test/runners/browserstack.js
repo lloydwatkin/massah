@@ -2,7 +2,6 @@ var uname = require('uname').uname
   , spawn = require('child_process').spawn
 
 var getBrowserStackLocalBin = function(options) {
-    console.log(process.arch, uname().sysname)
     var arch = ('x64' === process.arch) ? 'x86_64' : 'i386'
     var system = uname().sysname
     return __dirname +
@@ -36,7 +35,7 @@ var startApplication = function(options, done) {
     child.stdout.on('data', function (data) { 
         console.log(data.toString()) 
         if (-1 !== data.toString().indexOf('Press Ctrl-C to exit')) {
-            setTimeout(done, 5000)
+            setTimeout(done, options.browserstack['local-wait'] || 5000)
         }
     })
     process.on('SIGINT', function() { 

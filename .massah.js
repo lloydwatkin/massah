@@ -14,7 +14,8 @@ module.exports = function(yargs) {
         headless: false,
         browserstack: { 
             user: yargs.argv['browserstack-user'] || process.env.BROWSERSTACK_USER,
-            key: yargs.argv['browserstack-key'] || process.env.BROWSERSTACK_KEY
+            key: yargs.argv['browserstack-key'] || process.env.BROWSERSTACK_KEY,
+            'local-wait': yargs.argv['browserstack-local-wait'] || process.env.BROWSERSTACK_LOCAL_WAIT
         },
         capabilities: {
             browser: yargs.argv.browser || process.env.MASSAH_BROWSER || 'firefox',

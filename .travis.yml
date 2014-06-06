@@ -8,6 +8,7 @@ env:
     - MASSAH_RUNNER=browserstack
     - MASSAH_PROJECT="$TRAVIS_REPO_SLUG"
     - MASSAH_BUILD="Travis build No. $TRAVIS_BUILD_NUMBER for $TRAVIS_REPO_SLUG"
+    - BROWSERSTACK_LOCAL_WAIT=20000
   matrix:
     - MASSAH_RUNNER=vanilla MASSAH_BROWSER=firefox
     - MASSAH_BROWSER=firefox MASSAH_OS=Windows
