@@ -51,7 +51,7 @@ var setupRunner = function() {
         if (!runOptions.runner) runOptions.runner = 'vanilla'
         runner = require('./cli/commands/test/runners/' + runOptions.runner)
     } catch (e) {
-        console.log('Can not load runner \'' + runOptions.runner + '\''.red)
+        console.log('Can not load runner \'' + runOptions.runner + '\' reverting to vanilla runner'.red)
         console.log(e.red)
         runner = require('./cli/commands/test/runners/vanilla')
     }
