@@ -109,7 +109,7 @@ Standard values:
 - **seleniumServerPort**: Which port to use for the selenium server. Defaults to __4444__
 - **capabilities**: Object containing browser/os details see below
 
-See the [example file](https://github.com/lloydwatkin/massah/blob/master/README.md) for more information.
+See the [example file](https://github.com/lloydwatkin/massah/blob/master/.massah.js) for more information.
 
 #### Capabilities
 
