@@ -12,6 +12,7 @@ Making BDD style automated browser testing with node.js very simple. Get running
     - [Browsers](#browsers)
     - [Configuration file](#configuration-file)
       - [Capabilities](#capabilities)
+    - [Browserstack](#browserstack)
   - [Getting help](#getting-help)
 - [Tests](#tests)
   - [Writing features](#writing-features)
@@ -120,6 +121,14 @@ See the [example file](https://github.com/lloydwatkin/massah/blob/master/.massah
 - **os_version**: Operating system version. No default
 - **browser_version**: Browser version. No default
 - **screen_resolution**: Screen resolution. No default
+
+### Browserstack
+
+__Massah__ can now run tests via [browserstack](http://www.browserstack.com) meaning that you can run your automated UI tests again several browsers on several different operating systems.
+
+To achieve this set __runner__ equal to **browserstack** and set values for your username and key. An example of how to do this is in the `.massah.js` file.
+
+__Note:__ If running parallel tests running more than the permitted parallel test runs on your browserstack account will result in tests failing.
 
 ## Getting help
 
