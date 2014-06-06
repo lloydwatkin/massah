@@ -1,6 +1,5 @@
 var uname = require('uname').uname
   , spawn = require('child_process').spawn
-  , httpProxy = require('http-proxy')
 
 var getBrowserStackLocalBin = function(options) {
     console.log(process.arch, uname().sysname)
