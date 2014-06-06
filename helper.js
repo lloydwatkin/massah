@@ -48,8 +48,6 @@ var addChromeDriverToPath = function() {
 
 var setupRunner = function() {
     try {
-        console.log('using ' + runOptions.runner + ' as a runner')
-        console.log('using username ' + runOptions.browserstack.user)
         runner = require('./cli/commands/test/runners/' + runOptions.runner)
     } catch (e) {
         runner = require('./cli/commands/test/runners/vanilla')

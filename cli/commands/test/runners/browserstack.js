@@ -3,6 +3,7 @@ var uname = require('uname').uname
   , httpProxy = require('http-proxy')
 
 var getBrowserStackLocalBin = function(options) {
+    console.log(process.arch, uname().sysname)
     var arch = ('x64' === process.arch) ? 'x86_64' : 'i386'
     var system = uname().sysname
     return __dirname +
