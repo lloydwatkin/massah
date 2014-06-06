@@ -4,6 +4,7 @@ var Yadda = require('yadda')
   , headless = require('headless')
   , path = require('path')
   , uname = require('uname').uname
+  , extend = require('extend')
 
 require('webdriverjs-helper')
 
@@ -17,7 +18,10 @@ try {
 var runOptions = {
    xvfbServer: null,
    seleniumServerPort: 4444,
-   applicationPort: 3000
+   applicationPort: 3000,
+   capabilities: {
+       browser: 'firefox'   
+   }
 }
 var runner = null
 
@@ -50,11 +54,17 @@ var setupRunner = function() {
     }
 }
 
+var addCapabilities = function(capabilities) {
+    Object.keys(runOptions.capabilities).forEach(function(key) {
+        capabilities.set(key, runOptions.capabilities[key])
+    })
+}
+
 var startServer = function(done) {
         
-    runOptions.browser = runOptions.browser || process.env.BROWSER || 'firefox'
+    runOptions.capabilities.browser = runOptions.capabilities.browser || process.env.BROWSER || 'firefox'
     var capabilities = {}
-    if ('chromedriver' === runOptions.browser) {
+    if ('chromedriver' === runOptions.capabilities.browser) {
         capabilities = Webdriver.Capabilities.chrome()
         addChromeDriverToPath()
         var browser = new Webdriver.Builder()
@@ -64,16 +74,18 @@ var startServer = function(done) {
     }
 
     runner.startServer(capabilities, runOptions, function() {
-        switch (runOptions.browser) {
+        switch (runOptions.capabilities.browser) {
             case 'chrome':
             case 'phantomjs':
             case 'firefox':
             case 'opera':
-                capabilities = Webdriver.Capabilities[runOptions.browser]()
+            case 'ie':
+                capabilities = Webdriver.Capabilities[runOptions.capabilities.browser]()
+                addCapabilities(capabilities)
                 runner.addCapabilities(capabilities, runOptions)
                 break
             default:
-                throw new Error('Unknown browser ' + browserToUse)
+                throw new Error('Unknown browser ' + runOptions.capabilities.browser)
         }
         var browser = new Webdriver.Builder()
             .usingServer(runOptions.serverAddress)
@@ -114,7 +126,7 @@ var getLibrary = function(dictionary) {
 
 var setOption = function(name, value) {
     if (typeof name === 'object') {
-        return runOptions = name
+        return runOptions = extend(runOptions, name)
     }
     runOptions[name] = value
 }

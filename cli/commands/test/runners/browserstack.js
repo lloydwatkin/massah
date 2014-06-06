@@ -45,6 +45,9 @@ var startApplication = function(options, done) {
     process.on('SIGHUP', function() { 
         child.kill('SIGHUP')
     })
+    process.on('exit', function() {
+        child.kill()
+    })
 }
 
 module.exports = {

@@ -11,6 +11,7 @@ Making BDD style automated browser testing with node.js very simple. Get running
   - [Running tests](#running-tests)
     - [Browsers](#browsers)
     - [Configuration file](#configuration-file)
+      - [Capabilities](#capabilities)
   - [Getting help](#getting-help)
 - [Tests](#tests)
   - [Writing features](#writing-features)
@@ -104,11 +105,21 @@ Standard values:
 - **timeout**: Timeout for test steps in milliseconds, defaults to __60000__
 - **runner**: Which runner would like to use (e.g. **vanilla**, **browserstack**) uses __vanilla__ by default
 - **headless**: Whether to run tests headlessly or not (not supported by all runners), defaults to false __false__
-- **browser**: Browser to use for tests, defaults to __firefox__
 - **applicationPort**: Tells __Massah__ which port your application is running on where appropriate. Defaults to __3000__
 - **seleniumServerPort**: Which port to use for the selenium server. Defaults to __4444__
+- **capabilities**: Object containing browser/os details see below
 
 See the [example file](https://github.com/lloydwatkin/massah/blob/master/README.md) for more information.
+
+#### Capabilities
+
+**capabilties** is a key within the configuration object with its own sets of properties. Essentially it describes the browser and environment that you wish to run your tests in. Some keys can be specific to the platform they are running on (e.g. [browserstack](http://www.browserstack.com)):
+
+- **browser**: Browser to use for tests, defaults to __firefox__
+- **os**: Operating system. No default
+- **os_version**: Operating system version. No default
+- **browser_version**: Browser version. No default
+- **screen_resolution**: Screen resolution. No default
 
 ## Getting help
 
