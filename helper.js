@@ -52,7 +52,7 @@ var setupRunner = function() {
         runner = require('./cli/commands/test/runners/' + runOptions.runner)
     } catch (e) {
         console.log('Can not load runner \'' + runOptions.runner + '\' reverting to vanilla runner'.red)
-        console.log(e.red)
+        console.log(e.toString().red)
         runner = require('./cli/commands/test/runners/vanilla')
     }
 }
