@@ -81,6 +81,9 @@ __Massah__ is set up to use three different browser at present (adding more is r
 
 - Firefox (__firefox__)
 - Phantomjs (__phantomjs__) **requires install of phantomjs**
+- Opera (__opera__)
+- Safari (__safari__)
+- IE (__ie__)
 - Chrome
   - Remotely (__chrome__)
   - Using [chromedriver](https://code.google.com/p/selenium/wiki/ChromeDriver) (__chromedriver__)
