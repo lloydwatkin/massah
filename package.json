@@ -32,7 +32,7 @@
     "colours": "0.X",
     "headless": "0.X",
     "uname": "0.0.X",
-    "extend": "^1.2.1"
+    "extend": "1.X"
   },
   "author": {
     "name": "Lloyd Watkin"
