@@ -48,6 +48,8 @@ var addChromeDriverToPath = function() {
 
 var setupRunner = function() {
     try {
+        console.log('using ' + runOptions.runner + ' as a runner')
+        console.log('using username ' + runOptions.browserstack.user)
         runner = require('./cli/commands/test/runners/' + runOptions.runner)
     } catch (e) {
         runner = require('./cli/commands/test/runners/vanilla')
@@ -80,6 +82,7 @@ var startServer = function(done) {
             case 'firefox':
             case 'opera':
             case 'ie':
+            case 'safari':
                 capabilities = Webdriver.Capabilities[runOptions.capabilities.browser]()
                 addCapabilities(capabilities)
                 runner.addCapabilities(capabilities, runOptions)
