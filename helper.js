@@ -77,14 +77,14 @@ var startServer = function(done) {
     }
 
     runner.startServer(capabilities, runOptions, function() {
-        switch (runOptions.capabilities.browser) {
+        switch (runOptions.capabilities.browser.toLowerCase()) {
             case 'chrome':
             case 'phantomjs':
             case 'firefox':
             case 'opera':
             case 'ie':
             case 'safari':
-                capabilities = Webdriver.Capabilities[runOptions.capabilities.browser]()
+                capabilities = Webdriver.Capabilities[runOptions.capabilities.browser.toLowerCase()]()
                 addCapabilities(capabilities)
                 runner.addCapabilities(capabilities, runOptions)
                 break
