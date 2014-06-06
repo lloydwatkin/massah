@@ -8,7 +8,7 @@ env:
     - MASSAH_PROJECT="$TRAVIS_REPO_SLUG"
     - MASSAH_BUILD="Travis build No. $TRAVIS_BUILD_NUMBER for $TRAVIS_REPO_SLUG"
     - secure: 
- xamehQRWs1e8tPHaP624+9mxpVOqCP/P/RSOJpAdwlwdhSdbHMwuRKW+ZkrJTxZSNb51Yx5POKrrZVRbE2UJ7+67UHobC2hjputjw3psxz8lMW1dCdRpFhfgXotdeo3pcdjtFwG4e+LpKN3xApcHHAqGvJIuOPwdKaCmPEN1HHg=
+xamehQRWs1e8tPHaP624+9mxpVOqCP/P/RSOJpAdwlwdhSdbHMwuRKW+ZkrJTxZSNb51Yx5POKrrZVRbE2UJ7+67UHobC2hjputjw3psxz8lMW1dCdRpFhfgXotdeo3pcdjtFwG4e+LpKN3xApcHHAqGvJIuOPwdKaCmPEN1HHg=
   matrix:
     - MASSAH_BROWSER=firefox MASSAH_OS=Windows
     - MASSAH_BROWSER=opera MASSAH_OS=Windows
