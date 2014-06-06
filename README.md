@@ -10,6 +10,7 @@ Making BDD style automated browser testing with node.js very simple. Get running
   - [Getting started](#getting-started)
   - [Running tests](#running-tests)
     - [Browsers](#browsers)
+    - [Configuration file](#configuration-file)
   - [Getting help](#getting-help)
 - [Tests](#tests)
   - [Writing features](#writing-features)
@@ -93,6 +94,21 @@ Options:
 - ```--headless```: Run tests headlessly
 
 If you require additional browsers immediately please make a pull request or raise an issue.
+
+### Configuration file
+
+Placing a file ```.massah.js``` in the root of your project will cause __Massah__ to read this file for configuration values. The configuration file should return a function which is passed a copy of arguments (as processed by `yargs`), this in turn should return a JSON object of values. It is up to the user to define how values are set.
+
+Standard values:
+
+- **timeout**: Timeout for test steps in milliseconds, defaults to __60000__
+- **runner**: Which runner would like to use (e.g. **vanilla**, **browserstack**) uses __vanilla__ by default
+- **headless**: Whether to run tests headlessly or not (not supported by all runners), defaults to false __false__
+- **browser**: Browser to use for tests, defaults to __firefox__
+- **applicationPort**: Tells __Massah__ which port your application is running on where appropriate. Defaults to __3000__
+- **seleniumServerPort**: Which port to use for the selenium server. Defaults to __4444__
+
+See the [example file](https://github.com/lloydwatkin/massah/blob/master/README.md) for more information.
 
 ## Getting help
 

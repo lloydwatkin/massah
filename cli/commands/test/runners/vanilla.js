@@ -3,14 +3,17 @@ var startServer = function(capabilities, options, done) {
     if (options.xvfbServer) process.env.DISPLAY = ':' + options.xvfbServer
     var server = new SeleniumServer(
         __dirname + '/../../../../resources/selenium-server-standalone-2.39.0.jar',
-        { port: options.port }
+        { port: options.seleniumServerPort }
     )
     server.start().then(function() {
         options.serverAddress = server.address()   
         done()
     })
 }
+
+var addCapabilities = function(capabilities, options) {}
                         
 module.exports = {
-    startServer: startServer
+    startServer: startServer,
+    addCapabilities: addCapabilities
 }

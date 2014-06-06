@@ -3,9 +3,9 @@ var glob = require('glob')
   , Mocha = require('mocha')
   , helper = require('../../helper')
 
-var run = function() {
+var run = function(config) {
      var mocha = new Mocha({
-        timeout: 60000,
+        timeout: config.timeout || 60000,
         reporter: 'spec'
     })
 
@@ -18,8 +18,16 @@ var run = function() {
 
 module.exports = function(yargs) {
 
-    yargs.boolean('headless')
+    var config = null
+    try {
+        config = require(process.cwd() + '/.massah.js')(yargs)
+        console.log('Found a .massah.js config file'.green)
+        helper.setOption(config)
+    } catch (e) {console.log(e)}
 
-    helper.setOption('headless', yargs.argv.headless) 
-    return run()   
+    if (!config) {
+        yargs.boolean('headless')
+        helper.setOption('headless', yargs.argv.headless)
+    }
+    return run(config)   
 }

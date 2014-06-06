@@ -16,8 +16,10 @@ try {
 
 var runOptions = {
    xvfbServer: null,
-   port: 4444
+   seleniumServerPort: 4444,
+   applicationPort: 3000
 }
+var runner = null
 
 var getBrowser = function(done) {
 
@@ -40,37 +42,39 @@ var addChromeDriverToPath = function() {
     process.env.PATH = envPath.join(path.delimiter)
 }
 
-var startServer = function(done) {
-
-    var browserToUse = runOptions.browser || process.env.BROWSER || 'firefox'
-    var browser, capabilities
-    switch (browserToUse) {
-        case 'chrome':
-        case 'phantomjs':
-        case 'firefox':
-        case 'opera':
-            capabilities = Webdriver.Capabilities[browserToUse]()
-            break
-        case 'chromedriver':
-            capabilities = Webdriver.Capabilities.chrome()
-            addChromeDriverToPath()
-            var browser = new Webdriver.Builder()
-                .withCapabilities(capabilities)
-                .build()
-            done(browser)
-            return
-        default:
-            throw new Error('Unknown browser ' + browserToUse)
-    }
-    
-    var runner = null
+var setupRunner = function() {
     try {
         runner = require('./cli/commands/test/runners/' + runOptions.runner)
     } catch (e) {
         runner = require('./cli/commands/test/runners/vanilla')
     }
-    
+}
+
+var startServer = function(done) {
+        
+    runOptions.browser = runOptions.browser || process.env.BROWSER || 'firefox'
+    var capabilities = {}
+    if ('chromedriver' === runOptions.browser) {
+        capabilities = Webdriver.Capabilities.chrome()
+        addChromeDriverToPath()
+        var browser = new Webdriver.Builder()
+            .withCapabilities(capabilities)
+            .build()
+        return done(browser)
+    }
+
     runner.startServer(capabilities, runOptions, function() {
+        switch (runOptions.browser) {
+            case 'chrome':
+            case 'phantomjs':
+            case 'firefox':
+            case 'opera':
+                capabilities = Webdriver.Capabilities[runOptions.browser]()
+                runner.addCapabilities(capabilities, runOptions)
+                break
+            default:
+                throw new Error('Unknown browser ' + browserToUse)
+        }
         var browser = new Webdriver.Builder()
             .usingServer(runOptions.serverAddress)
             .withCapabilities(capabilities)
@@ -81,13 +85,26 @@ var startServer = function(done) {
 }
 
 var startApplication = function(done) {
-    if (!testHelper.startApplication) return done()
-    testHelper.startApplication(done)
+    if (!runner) setupRunner()
+
+    var next = function() {
+        if (runner.startApplication) {
+            return runner.startApplication(runOptions, done)
+        }
+        done()
+    }
+    if (!testHelper.startApplication) return next()
+    testHelper.startApplication(next)
 }
 
 var stopApplication = function(done) {
     if (!testHelper.stopApplication) return done()
-    testHelper.stopApplication(done)
+    testHelper.stopApplication(function() {
+        if (runner.stopApplication) {
+            return runner.stopApplication(runOptions, done)
+        }
+        done()
+    })
 }
 
 var getLibrary = function(dictionary) {
@@ -108,7 +125,8 @@ module.exports = {
     application: {
         start: startApplication,
         stop: stopApplication,
-        helper: testHelper
+        helper: testHelper,
+        port: runOptions.applicationPort
     },
     Webdriver: Webdriver,
     getLibrary: getLibrary,

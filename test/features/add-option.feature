@@ -3,7 +3,7 @@ Feature: Google Search
 Background:
 
     Given I visit the home page
-   
+
 Scenario: Should load the search page when a term is submitted
 
     Given a page with title 'Massah test page'
