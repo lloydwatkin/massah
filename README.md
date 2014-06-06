@@ -215,7 +215,7 @@ To test __Massah__, simply run
 npm test
 ```
 
-From the command line. __Massah__ uses itself to test itself.
+From the command line. __Massah__ uses itself to test itself. Please also check out our build job on [Travisci](https://travis-ci.org) where we use [Browserstack](http://www.browserstack.com) to test multiple browsers in parallel: https://travis-ci.org/lloydwatkin/massah/builds
 
 # Name
 
