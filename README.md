@@ -77,7 +77,7 @@ You can set this to be used for `npm test` in your **package.json**.
 
 ### Browsers
 
-__Massah__ is set up to use three different browser at present (adding more is rather simple). By default __Firefox__ is used. Browsers available to use at present are:
+__Massah__ is set up to use multiple browsers. By default __Firefox__ is used. Browsers available to use are:
 
 - Firefox (__firefox__)
 - Phantomjs (__phantomjs__) **requires install of phantomjs**
@@ -97,8 +97,6 @@ BROWSER=chromedriver massah test
 Options:
 
 - ```--headless```: Run tests headlessly
-
-If you require additional browsers immediately please make a pull request or raise an issue.
 
 ### Configuration file
 
