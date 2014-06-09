@@ -26,6 +26,10 @@ Making BDD style automated browser testing with node.js very simple. Get running
 - [Name](#name)
 - [Licence](#licence)
 
+# Thanks
+
+Thanks to [Browserstack](http://www.browserstack.com) for a FREE basic account in order to test __Massah__.
+
 # Introduction
 
 __Massah__ is essentially a wrapper around the following projects just making things a few steps easier for developers to run up a BDD-style automated browser testing setup.
