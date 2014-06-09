@@ -11,6 +11,11 @@ var beforeTests = function(done) {
       res.end(index)
     })
     application.listen(port)
+    process.on('exit', function() {
+        try { 
+            application.close()
+        } catch(error) {}
+    })
     done()
 }
 

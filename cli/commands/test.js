@@ -15,13 +15,13 @@ var run = function(config) {
             var end = function() { 
                 process.exit(failures || 0)
             }
-            if (!helper.application.helper.afterTests) return end()
-            helper.application.helper.afterTests(end)
+            if (!helper.application.after) return end()
+            helper.application.after(end)
         })
     }
     mocha.addFile('./node_modules/massah/index.js')
-    if (!helper.application.helper.beforeTests) return next()
-    helper.application.helper.beforeTests(next)
+    if (!helper.application.before) return next()
+    helper.application.before(next)
 }
 
 module.exports = function(yargs) {

@@ -126,6 +126,32 @@ var stopApplication = function(done) {
     })
 }
 
+var beforeTests = function(done) {
+    if (!runner) setupRunner()
+
+    var next = function() {
+        if (runner.beforeTests) {
+            return runner.beforeTests(runOptions, done)
+        }
+        done()
+    }
+    if (!testHelper.beforeTests) return next()
+    testHelper.beforeTests(next)
+}
+
+var afterTests = function(done) {
+    var next = function() {
+        if (testHelper.afterTests) {
+            return testHelper.afterTests(done)
+        }
+        done()
+    }
+    if (!runner.afterTests) return next()
+    runner.afterTests(function() {
+        next()
+    })
+}
+
 var getLibrary = function(dictionary) {
     var library = new Yadda.localisation.English.library(dictionary)
     return library
@@ -145,7 +171,9 @@ module.exports = {
         start: startApplication,
         stop: stopApplication,
         helper: testHelper,
-        port: runOptions.applicationPort
+        port: runOptions.applicationPort,
+        before: beforeTests,
+        after: afterTests
     },
     Webdriver: Webdriver,
     getLibrary: getLibrary,
