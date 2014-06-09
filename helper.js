@@ -114,12 +114,15 @@ var startApplication = function(done) {
 }
 
 var stopApplication = function(done) {
-    if (!testHelper.stopApplication) return done()
-    testHelper.stopApplication(function() {
-        if (runner.stopApplication) {
-            return runner.stopApplication(runOptions, done)
+    var next = function() {
+        if (testHelper.stopApplication) {
+            return testHelper.stopApplication(done)
         }
         done()
+    }
+    if (!runner.stopApplication) return next()
+    runner.stopApplication(function() {
+        next()
     })
 }
 

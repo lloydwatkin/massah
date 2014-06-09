@@ -1,6 +1,8 @@
 var uname = require('uname').uname
   , spawn = require('child_process').spawn
 
+var childProcess = null
+
 var getBrowserStackLocalBin = function(options) {
     var arch = ('x64' === process.arch) ? 'x86_64' : 'i386'
     var system = uname().sysname
@@ -23,8 +25,8 @@ var addCapabilities = function(capabilities, options) {
 
 var startApplication = function(options, done) {
     var bin = getBrowserStackLocalBin(options)
-    var child = spawn(bin, [ options.browserstack.key, 'localhost,' + options.applicationPort + ',0' ])
-    child.stderr.on('data', function (data) {
+    childProcess = spawn(bin, [ options.browserstack.key, 'localhost,' + options.applicationPort + ',0' ])
+    childProcess.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
           console.log('Failed to start BrowserStack local daemon'.red)
           console.log(data.toString().red)
@@ -32,25 +34,34 @@ var startApplication = function(options, done) {
       }
       console.log('Error with browserstack local: ' + data.toString().red)
     })
-    child.stdout.on('data', function (data) { 
+    childProcess.stdout.on('data', function (data) { 
         console.log(data.toString()) 
         if (-1 !== data.toString().indexOf('Press Ctrl-C to exit')) {
             setTimeout(done, options.browserstack['local-wait'] || 5000)
         }
     })
     process.on('SIGINT', function() { 
-        child.kill('SIGINT')
+        childProcess.kill('SIGINT')
     })
     process.on('SIGHUP', function() { 
-        child.kill('SIGHUP')
+        childProcess.kill('SIGHUP')
     })
     process.on('exit', function() {
-        child.kill()
+        childProcess.kill()
     })
+}
+
+var stopApplication = function(done) {
+    if (!childProcess) return done()
+    childProcess.on('disconnect', function() {
+        done()
+    })
+    childProcess.disconnect()
 }
 
 module.exports = {
     startServer: startServer,
     addCapabilities: addCapabilities,
-    startApplication: startApplication
+    startApplication: startApplication,
+    stopApplication: stopApplication
 }
