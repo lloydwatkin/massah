@@ -10,11 +10,18 @@ var run = function(config) {
         reporter: 'spec'
     })
 
+    var next = function() {
+        mocha.run(function(failures) {
+            var end = function() { 
+                process.exit(failures || 0)
+            }
+            if (!helper.application.helper.afterTests) return end()
+            helper.application.helper.afterTests(end)
+        })
+    }
     mocha.addFile('./node_modules/massah/index.js')
-
-    mocha.run(function(failures) {
-        process.exit(failures || 0)
-    })
+    if (!helper.application.helper.beforeTests) return next()
+    helper.application.helper.beforeTests(next)
 }
 
 module.exports = function(yargs) {

@@ -5,7 +5,7 @@ var http = require('http')
 var application = null
   , port = 3000
 
-var startApplication = function(done) {
+var beforeTests = function(done) {
     application = http.createServer(function (req, res) {
       res.writeHead(200, { 'Content-Type': 'text/html' })
       res.end(index)
@@ -14,7 +14,7 @@ var startApplication = function(done) {
     done()
 }
 
-var stopApplication = function(done) {
+var afterTests = function(done) {
     application.close()
     done()
 }
@@ -26,8 +26,8 @@ var beforeScenario = function(annotations, context) {
 }
 
 module.exports = {
-    startApplication: startApplication,
-    stopApplication: stopApplication,
+    beforeTests: beforeTests,
+    afterTests: afterTests,
     beforeScenario: beforeScenario,
     port: port
 }
