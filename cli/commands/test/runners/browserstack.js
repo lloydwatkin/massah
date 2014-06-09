@@ -35,7 +35,6 @@ var beforeTests = function(options, done) {
       console.log('Error with browserstack local: ' + data.toString().red)
     })
     childProcess.stdout.on('data', function (data) { 
-        console.log(data.toString()) 
         if (-1 !== data.toString().indexOf('Press Ctrl-C to exit')) {
             setTimeout(done, options.browserstack['local-wait'] || 5000)
         }
