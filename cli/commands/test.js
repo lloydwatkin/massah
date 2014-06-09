@@ -4,7 +4,8 @@ var glob = require('glob')
   , helper = require('../../helper')
 
 var run = function(config) {
-     var mocha = new Mocha({
+
+    var mocha = new Mocha({
         timeout: config.timeout || 60000,
         reporter: 'spec'
     })
@@ -17,17 +18,23 @@ var run = function(config) {
 }
 
 module.exports = function(yargs) {
-
-    var config = null
     try {
-        config = require(process.cwd() + '/.massah.js')(yargs)
-        console.log('Found a .massah.js config file'.green)
-        helper.setOption(config)
-    } catch (e) {console.log(e)}
+        var config = null
+        try {
+            config = require(process.cwd() + '/.massah.js')(yargs)
+            console.log('Found a .massah.js config file'.green)
+            helper.setOption(config)
+        } catch (e) {console.log(e)}
 
-    if (!config) {
-        yargs.boolean('headless')
-        helper.setOption('headless', yargs.argv.headless)
+        if (!config) {
+            yargs.boolean('headless')
+            helper.setOption('headless', yargs.argv.headless)
+        }
+        return run(config)   
+    } catch (error) {
+        console.log(
+            'Error loading test suite:\n'.red +
+            error.message.red
+        )
     }
-    return run(config)   
 }
