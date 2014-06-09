@@ -53,10 +53,8 @@ var startApplication = function(options, done) {
 
 var stopApplication = function(done) {
     if (!childProcess) return done()
-    childProcess.on('disconnect', function() {
-        done()
-    })
-    childProcess.disconnect()
+    childProcess.kill()
+    done()
 }
 
 module.exports = {
