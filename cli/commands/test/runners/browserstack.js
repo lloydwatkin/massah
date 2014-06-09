@@ -23,7 +23,7 @@ var addCapabilities = function(capabilities, options) {
 
 var startApplication = function(options, done) {
     var bin = getBrowserStackLocalBin(options)
-    var child = spawn(bin, [ options.browserstack.key, 'localhost,' + options.applicationPort + ',0', '-force' ])
+    var child = spawn(bin, [ options.browserstack.key, 'localhost,' + options.applicationPort + ',0' ])
     child.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
           console.log('Failed to start BrowserStack local daemon'.red)
