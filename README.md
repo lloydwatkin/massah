@@ -196,13 +196,13 @@ In order to do this create a `helper.js` file in the __test__ folder of your app
 
 ### Starting your application
 
-If your helper exports a ```beforeTests``` or ```startApplication``` method then these will be called and passed a callback parameter. The callback should be called when your application has completed starting up.
+If your helper exports a ```beforeSuite``` or ```beforeFeature``` method then these will be called and passed a callback parameter. The callback should be called when your application has completed starting up.
 
-If using Browserstack then you will need to start your application before your tests run (i.e. in ```beforeTests```). This is because their browserstack local process requires a listener to be available on your application port whilst running.
+If using Browserstack then you will need to start your application before your tests run (i.e. in ```beforeSuite```). This is because their browserstack local process requires a listener to be available on your application port whilst running.
 
 ### Stopping your application
 
-If your helper exports a ```afterTests``` or ```stopApplication``` method then these will be called and passed a callback parameter. The callback should be called when your application has completed closing down.
+If your helper exports a ```afterSuite``` or ```afterFeature``` method then these will be called and passed a callback parameter. The callback should be called when your application has completed closing down.
 
 ### Accessing your application
 

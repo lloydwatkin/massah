@@ -23,7 +23,7 @@ var addCapabilities = function(capabilities, options) {
     capabilities.set('browserstack.local', true)
 }
 
-var beforeTests = function(options, done) {
+var beforeSuite = function(options, done) {
     var bin = getBrowserStackLocalBin(options)
     childProcess = spawn(bin, [ options.browserstack.key, 'localhost,' + options.applicationPort + ',0' ])
     childProcess.stderr.on('data', function (data) {
@@ -50,7 +50,7 @@ var beforeTests = function(options, done) {
     })
 }
 
-var afterTests = function(done) {
+var afterSuite = function(done) {
     if (!childProcess) return done()
     childProcess.on('close', function() {
         done()
@@ -61,6 +61,6 @@ var afterTests = function(done) {
 module.exports = {
     startServer: startServer,
     addCapabilities: addCapabilities,
-    beforeTests: beforeTests,
-    afterTests: afterTests
+    beforeSuite: beforeSuite,
+    afterSuite: afterSuite
 }

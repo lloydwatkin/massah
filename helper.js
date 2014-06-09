@@ -100,54 +100,54 @@ var startServer = function(done) {
     })
 }
 
-var startApplication = function(done) {
+var beforeFeature = function(done) {
     if (!runner) setupRunner()
 
     var next = function() {
-        if (runner.startApplication) {
-            return runner.startApplication(runOptions, done)
+        if (runner.beforeFeature) {
+            return runner.beforeFeature(runOptions, done)
         }
         done()
     }
-    if (!testHelper.startApplication) return next()
-    testHelper.startApplication(next)
+    if (!testHelper.beforeFeature) return next()
+    testHelper.beforeFeature(next)
 }
 
-var stopApplication = function(done) {
+var afterFeature = function(done) {
     var next = function() {
-        if (testHelper.stopApplication) {
-            return testHelper.stopApplication(done)
+        if (testHelper.afterFeature) {
+            return testHelper.afterFeature(done)
         }
         done()
     }
-    if (!runner.stopApplication) return next()
-    runner.stopApplication(function() {
+    if (!runner.afterFeature) return next()
+    runner.afterFeature(function() {
         next()
     })
 }
 
-var beforeTests = function(done) {
+var beforeSuite = function(done) {
     if (!runner) setupRunner()
 
     var next = function() {
-        if (runner.beforeTests) {
-            return runner.beforeTests(runOptions, done)
+        if (runner.beforeSuite) {
+            return runner.beforeSuite(runOptions, done)
         }
         done()
     }
-    if (!testHelper.beforeTests) return next()
-    testHelper.beforeTests(next)
+    if (!testHelper.beforeSuite) return next()
+    testHelper.beforeSuite(next)
 }
 
-var afterTests = function(done) {
+var afterSuite = function(done) {
     var next = function() {
-        if (testHelper.afterTests) {
-            return testHelper.afterTests(done)
+        if (testHelper.afterSuite) {
+            return testHelper.afterSuite(done)
         }
         done()
     }
-    if (!runner.afterTests) return next()
-    runner.afterTests(function() {
+    if (!runner.afterSuite) return next()
+    runner.afterSuite(function() {
         next()
     })
 }
@@ -168,12 +168,12 @@ module.exports = {
     Yadda: Yadda,
     getBrowser: getBrowser,
     application: {
-        start: startApplication,
-        stop: stopApplication,
+        start: beforeFeature,
+        stop: afterFeature,
         helper: testHelper,
         port: runOptions.applicationPort,
-        before: beforeTests,
-        after: afterTests
+        before: beforeSuite,
+        after: afterSuite
     },
     Webdriver: Webdriver,
     getLibrary: getLibrary,

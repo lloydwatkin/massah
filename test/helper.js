@@ -5,7 +5,7 @@ var http = require('http')
 var application = null
   , port = 3000
 
-var beforeTests = function(done) {
+var beforeSuite = function(done) {
     application = http.createServer(function (req, res) {
       res.writeHead(200, { 'Content-Type': 'text/html' })
       res.end(index)
@@ -19,7 +19,7 @@ var beforeTests = function(done) {
     done()
 }
 
-var afterTests = function(done) {
+var afterSuite = function(done) {
     application.close()
     done()
 }
@@ -31,8 +31,8 @@ var beforeScenario = function(annotations, context) {
 }
 
 module.exports = {
-    beforeTests: beforeTests,
-    afterTests: afterTests,
+    beforeSuite: beforeSuite,
+    afterSuite: afterSuite,
     beforeScenario: beforeScenario,
     port: port
 }

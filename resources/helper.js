@@ -1,15 +1,25 @@
-var startApplication = function(done) {
+var beforeFeature = function(done) {
     done()
 }
 
-var stopApplication = function(done) {
+var afterFeature = function(done) {
+    done()
+}
+
+var beforeSuite = function(done) {
+    done()   
+}
+
+var afterSuite = function(done) {
     done()
 }
 
 var beforeScenario = function(annotations, context) {}
 
 module.exports = {
-    startApplication: startApplication,
-    stopApplication: stopApplication,
-    beforeScenario: beforeScenario
+    beforeFeature: beforeFeature,
+    afterFeature: afterFeature,
+    afterFeature: beforeScenario,
+    beforeSuite: beforeSuite,
+    afterSuite: afterSuite
 }
