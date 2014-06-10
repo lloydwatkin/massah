@@ -38,6 +38,11 @@ var beforeSuite = function(options, done) {
         if (-1 !== data.toString().indexOf('Press Ctrl-C to exit')) {
             setTimeout(done, options.browserstack['local-wait'] || 5000)
         }
+        if (-1 !== data.toString().indexOf('Error:')) {
+            console.log('Could not start browserstacklocal'.red)
+            console.log(data.toString().red)
+            process.exit(1)
+        }
     })
     process.on('SIGINT', function() { 
         childProcess.kill('SIGINT')
