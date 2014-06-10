@@ -20,10 +20,14 @@ var startServer = function(capabilities, options, done) {
 var addCapabilities = function(capabilities, options) {
     capabilities.set('browserstack.user', options.browserstack.user)
     capabilities.set('browserstack.key', options.browserstack.key)
-    capabilities.set('browserstack.local', true)
+    capabilities.set('browserstack.local', options.browserstack.local)
 }
 
 var beforeSuite = function(options, done) {
+    if (!options.browserstack.local) {
+      done()
+      return
+    }
     var bin = getBrowserStackLocalBin(options)
     childProcess = spawn(bin, [ options.browserstack.key, 'localhost,' + options.applicationPort + ',0' ])
     childProcess.stderr.on('data', function (data) {
