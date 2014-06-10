@@ -26,12 +26,12 @@ var run = function(config) {
 
 module.exports = function(yargs) {
     try {
-        var config = null
+        var config = {}
         try {
             config = require(process.cwd() + '/.massah.js')(yargs)
             console.log('Found a .massah.js config file'.green)
             helper.setOption(config)
-        } catch (e) {console.log(e)}
+        } catch (e) {}
 
         if (!config) {
             yargs.boolean('headless')
