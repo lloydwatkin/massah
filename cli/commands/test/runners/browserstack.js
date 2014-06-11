@@ -15,7 +15,7 @@ var getBrowserStackLocalBin = function(options) {
 var startServer = function(capabilities, options, done) {
     options.serverAddress = 'http://hub.browserstack.com/wd/hub'
     if (options.browserstack.local === undefined) {
-       options.browserstack.local = true;
+       options.browserstack.local = true
     }
     done()
 }
