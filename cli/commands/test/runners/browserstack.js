@@ -28,7 +28,7 @@ var beforeSuite = function(options, done) {
     var binOptions = [
         options.browserstack.key,
         'localhost,' + options.applicationPort + ',0',
-        '-localIdentifier="' + identifier + "'   
+        '-localIdentifier="' + identifier + '"'
     ]
     var identifier = Math.random().toString(36).replace(/[^a-z]+/g, '')
     childProcess = spawn(bin, binOptions)
