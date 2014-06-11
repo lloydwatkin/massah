@@ -25,7 +25,13 @@ var addCapabilities = function(capabilities, options) {
 
 var beforeSuite = function(options, done) {
     var bin = getBrowserStackLocalBin(options)
-    childProcess = spawn(bin, [ options.browserstack.key, 'localhost,' + options.applicationPort + ',0' ])
+    var binOptions = [
+        options.browserstack.key,
+        'localhost,' + options.applicationPort + ',0',
+        '-localIdentifier="' + identifier + "'   
+    ]
+    var identifier = Math.random().toString(36).replace(/[^a-z]+/g, '')
+    childProcess = spawn(bin, binOptions)
     childProcess.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
           console.log('Failed to start BrowserStack local daemon'.red)
