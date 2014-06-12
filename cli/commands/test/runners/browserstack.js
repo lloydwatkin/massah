@@ -14,16 +14,23 @@ var getBrowserStackLocalBin = function(options) {
 
 var startServer = function(capabilities, options, done) {
     options.serverAddress = 'http://hub.browserstack.com/wd/hub'
+    if (options.browserstack.local === undefined) {
+       options.browserstack.local = true
+    }
     done()
 }
 
 var addCapabilities = function(capabilities, options) {
     capabilities.set('browserstack.user', options.browserstack.user)
     capabilities.set('browserstack.key', options.browserstack.key)
-    capabilities.set('browserstack.local', true)
+    capabilities.set('browserstack.local', options.browserstack.local)
 }
 
 var beforeSuite = function(options, done) {
+    if (options.browserstack.local === false) {
+      done()
+      return
+    }
     var bin = getBrowserStackLocalBin(options)
     var binOptions = [
         options.browserstack.key,
