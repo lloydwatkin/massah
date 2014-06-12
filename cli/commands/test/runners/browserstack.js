@@ -14,8 +14,8 @@ var getBrowserStackLocalBin = function(options) {
 
 var startServer = function(capabilities, options, done) {
     options.serverAddress = 'http://hub.browserstack.com/wd/hub'
-    if (options.browserstack.local === undefined) {
-       options.browserstack.local = true
+    if (typeof options.browserstack.useLocalBinary === 'undefined') {
+       options.browserstack.useLocalBinary = true
     }
     done()
 }
@@ -23,11 +23,11 @@ var startServer = function(capabilities, options, done) {
 var addCapabilities = function(capabilities, options) {
     capabilities.set('browserstack.user', options.browserstack.user)
     capabilities.set('browserstack.key', options.browserstack.key)
-    capabilities.set('browserstack.local', options.browserstack.local)
+    capabilities.set('browserstack.local', options.browserstack.useLocalBinary)
 }
 
 var beforeSuite = function(options, done) {
-    if (options.browserstack.local === false) {
+    if (options.browserstack.useLocalBinary === false) {
       done()
       return
     }
