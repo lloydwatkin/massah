@@ -34,8 +34,7 @@ var beforeSuite = function(options, done) {
     var bin = getBrowserStackLocalBin(options)
     var binOptions = [
         options.browserstack.key,
-        'localhost,' + options.applicationPort + ',0',
-        '-localIdentifier="' + identifier + '"'
+        'localhost,' + options.applicationPort + ',0'
     ]
     var identifier = Math.random().toString(36).replace(/[^a-z]+/g, '')
     childProcess = spawn(bin, binOptions)
