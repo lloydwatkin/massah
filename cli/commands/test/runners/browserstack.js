@@ -38,9 +38,10 @@ var beforeSuite = function(options, done) {
         .replace(/[^a-z]+/g, '')
     var binOptions = [
         options.browserstack.key,
-        '-identifier "' + identifier + '"',
+        '-localIdentifier "' + identifier + '"',
         'localhost,' + options.applicationPort + ',0'
     ]
+    
 
     childProcess = spawn(bin, binOptions)
     childProcess.stderr.on('data', function (data) {
