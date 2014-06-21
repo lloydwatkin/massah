@@ -2,7 +2,7 @@ var startServer = function(capabilities, options, done) {
     SeleniumServer = require('selenium-webdriver/remote').SeleniumServer
     if (options.xvfbServer) process.env.DISPLAY = ':' + options.xvfbServer
     var server = new SeleniumServer(
-        __dirname + '/../../../../resources/selenium-server-standalone-2.39.0.jar',
+        __dirname + '/../../../../resources/selenium-server-standalone-2.42.2.jar',
         { port: options.seleniumServerPort }
     )
     server.start().then(function() {
