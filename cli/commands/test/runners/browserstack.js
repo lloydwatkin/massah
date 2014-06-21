@@ -42,8 +42,8 @@ var beforeSuite = function(options, done) {
         process.exit(1)
     }
     var binOptions = [
-        '-f ' + options.browserstack.key,
         '-localIdentifier "' + identifier + '" ',
+        options.browserstack.key,
         ' localhost,' + options.applicationPort + ',0'
     ]
     console.log(bin, binOptions)
