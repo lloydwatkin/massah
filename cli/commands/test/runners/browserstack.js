@@ -46,6 +46,7 @@ var beforeSuite = function(options, done) {
         '-localIdentifier "' + identifier + '" ',
         ' localhost,' + options.applicationPort + ',0'
     ]
+    console.log(bin, binOptions)
     childProcess = spawn(bin, binOptions)
     childProcess.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
