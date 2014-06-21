@@ -42,11 +42,10 @@ var beforeSuite = function(options, done) {
         process.exit(1)
     }
     var binOptions = [
-        '-localIdentifier "' + identifier + '" ',
+        '-localIdentifier="' + identifier + '" ',
         options.browserstack.key,
-        ' localhost,' + options.applicationPort + ',0'
+        'localhost,' + options.applicationPort + ',0'
     ]
-    console.log(bin, binOptions)
     childProcess = spawn(bin, binOptions)
     childProcess.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
