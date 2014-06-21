@@ -16,6 +16,12 @@ module.exports = (function() {
                 text.should.equal('')
             })
         })
+        .then('the text box should be focussed', function() {
+            this.driver.element('input[id=label]:focus').then(
+                null,
+                function() { throw new Error('Expected element to be focussed') }
+            )
+        })
     
     return library
 })()
