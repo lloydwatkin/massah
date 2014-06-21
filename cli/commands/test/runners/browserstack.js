@@ -36,13 +36,16 @@ var beforeSuite = function(options, done) {
         .toString(36)
         .toLowerCase()
         .replace(/[^a-z]+/g, '')
-    var binOptions = [
-        options.browserstack.key,
-        '-localIdentifier "' + identifier + '"',
-        'localhost,' + options.applicationPort + ',0'
-    ]
-    
 
+    if (!options.browserstack.key) {
+        console.log('Missing Browserstack key'.red)
+        process.exit(1)
+    }
+    var binOptions = [
+        '-f ' + options.browserstack.key,
+        '-localIdentifier "' + identifier + '" ',
+        ' localhost,' + options.applicationPort + ',0'
+    ]
     childProcess = spawn(bin, binOptions)
     childProcess.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
