@@ -32,11 +32,16 @@ var beforeSuite = function(options, done) {
       return
     }
     var bin = getBrowserStackLocalBin(options)
+    var identifier = Math.random()
+        .toString(36)
+        .toLowerCase()
+        .replace(/[^a-z]+/g, '')
     var binOptions = [
         options.browserstack.key,
+        '-identifier "' + identifier + '"',
         'localhost,' + options.applicationPort + ',0'
     ]
-    var identifier = Math.random().toString(36).replace(/[^a-z]+/g, '')
+
     childProcess = spawn(bin, binOptions)
     childProcess.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
