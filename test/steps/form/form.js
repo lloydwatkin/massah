@@ -11,6 +11,9 @@ module.exports = (function() {
             }
             this.driver.element('input[id=label]').enter(option)
         })
+        .when('I click on the text box', function() {
+            this.driver.element('input[id=label]').click()
+        })
         .then('the text box is empty', function() {
             this.driver.input('#label').value(function(text) {
                 text.should.equal('')
