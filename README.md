@@ -223,6 +223,13 @@ data which will be available to each of the test steps. The context object exist
 
 For an example of annotations being used please see the annotation override test in __Massah__.
 
+### @Only / @Pending / grepping tests
+
+You can run only a certain scenario or feature by adding the __@Only__ annotation.
+
+Tests can be skipped by adding the __@Pending__ annotation.
+
+You can grep (or inverse grep for tests using your ```.massah.js``` file), see [this example](https://github.com/lloydwatkin/massah/blob/master/.massah.js#L16-L19).
 # Testing
 
 To test __Massah__, simply run
