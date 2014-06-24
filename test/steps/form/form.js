@@ -11,10 +11,19 @@ module.exports = (function() {
             }
             this.driver.element('input[id=label]').enter(option)
         })
+        .when('I click on the text box', function() {
+            this.driver.element('input[id=label]').click()
+        })
         .then('the text box is empty', function() {
             this.driver.input('#label').value(function(text) {
                 text.should.equal('')
             })
+        })
+        .then('the text box should be focussed', function() {
+            this.driver.element('input[id=label]:focus').then(
+                null,
+                function() { throw new Error('Expected element to be focussed') }
+            )
         })
     
     return library

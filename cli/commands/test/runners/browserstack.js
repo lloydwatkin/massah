@@ -32,11 +32,20 @@ var beforeSuite = function(options, done) {
       return
     }
     var bin = getBrowserStackLocalBin(options)
+    var identifier = Math.random()
+        .toString(36)
+        .toLowerCase()
+        .replace(/[^a-z]+/g, '')
+
+    if (!options.browserstack.key) {
+        console.log('Missing Browserstack key'.red)
+        process.exit(1)
+    }
     var binOptions = [
+        /* '-localIdentifier="' + identifier + '" ', */
         options.browserstack.key,
         'localhost,' + options.applicationPort + ',0'
     ]
-    var identifier = Math.random().toString(36).replace(/[^a-z]+/g, '')
     childProcess = spawn(bin, binOptions)
     childProcess.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
