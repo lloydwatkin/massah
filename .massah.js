@@ -13,6 +13,10 @@ module.exports = function(yargs) {
     return {
         runner: yargs.argv.runner || process.env.MASSAH_RUNNER || 'vanilla',
         headless: false,
+        match: {
+            grep: '@dontRun',
+            invert: true
+        },
         browserstack: { 
             user: yargs.argv['browserstack-user'] || process.env.BROWSERSTACK_USER,
             key: yargs.argv['browserstack-key'] || process.env.BROWSERSTACK_KEY,

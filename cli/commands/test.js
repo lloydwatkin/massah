@@ -10,6 +10,11 @@ var run = function(config) {
         reporter: 'spec'
     })
 
+    if (config.match && config.match.grep) {
+        mocha.grep(config.match.grep)
+        if (config.match.invert) mocha.invert()
+    }
+
     var next = function() {
         mocha.run(function(failures) {
             var end = function() { 
