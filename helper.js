@@ -164,6 +164,10 @@ var setOption = function(name, value) {
     runOptions[name] = value
 }
 
+var getOption = function(name) {
+    return runOptions[name]
+}
+
 module.exports = {
     Yadda: Yadda,
     getBrowser: getBrowser,
@@ -177,5 +181,6 @@ module.exports = {
     },
     Webdriver: Webdriver,
     getLibrary: getLibrary,
-    setOption: setOption
+    setOption: setOption,
+    getOption: getOption
 }

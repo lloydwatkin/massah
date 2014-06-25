@@ -22,7 +22,13 @@ var stepDefinitions = loadStepDefinitions()
 var featuresPath = process.cwd() + '/test/features'
 new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
     featureFile(file, function(feature) {
+        
+        if (false === runThisTest(feature.annotations, feature.title)) return
+        
         scenarios(feature.scenarios, function(scenario) {
+            
+            if (false === runThisTest(scenario.annotations, scenario.title)) return
+            
             var stepNumber = 0
             var context = {}
             steps(scenario.steps, function(step, done) {
@@ -68,6 +74,44 @@ new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
         })
     })
 })
+
+function stringMatch(match, annotations, title) {
+    var index = title.toLowerCase().indexOf(match.grep.toLowerCase())
+    var annotationMatch = false
+    Object.keys(annotations).forEach(function(annotation) {
+        if ('@' + annotation === match.grep) annotationMatch = true
+    })
+    if (!match.invert) {
+        if ((index !== -1) || annotationMatch) return true
+        return false
+    }
+    if ((index !== -1) || annotationMatch) return false
+    return true
+}
+
+function regexMatch(match, annotations, title) {
+    var titleMatch = title.match(match.grep)
+    var annotationMatch = false
+    Object.keys(annotations).forEach(function(annotation) {
+        if (annotation.match(match.grep)) annotationMatch = true
+    })
+    if (!match.invert) {
+        if (titleMatch || annotationMatch) return true
+        return false
+    }
+    if (titleMatch || annotationMatch) return false
+    return true
+}
+
+function runThisTest(annotations, title) {
+    var match = helper.getOption('match')
+    if (!match || !match.grep) return true
+
+    if (typeof match.grep === 'string') {
+        return stringMatch(match, annotations, title)
+    }
+    return regexMatch(match, annotations, title)
+}
 
 function executeInFlow(fn, done) {
     helper.Webdriver.promise.controlFlow().execute(fn).then(function() {

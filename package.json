@@ -36,7 +36,7 @@
   "dependencies": {
     "mocha": "1.X",
     "webdriverjs-helper": "1.X",
-    "yadda": "0.X",
+    "yadda": "^0.10.13",
     "selenium-webdriver": "2.X",
     "glob": "3.X",
     "should": "3.X",

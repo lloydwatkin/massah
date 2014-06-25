@@ -229,7 +229,9 @@ You can run only a certain scenario or feature by adding the __@Only__ annotatio
 
 Tests can be skipped by adding the __@Pending__ annotation.
 
-You can grep (or inverse grep for tests using your ```.massah.js``` file), see [this example](https://github.com/lloydwatkin/massah/blob/master/.massah.js#L16-L19).
+You can grep (or inverse grep for tests using your ```.massah.js``` file), see [this example](https://github.com/lloydwatkin/massah/blob/master/.massah.js#L16-L19). The grep can be in the form of 
+a string or a ```RegExp``` object. When using strings annotations are checked using a strict match.
+
 # Testing
 
 To test __Massah__, simply run

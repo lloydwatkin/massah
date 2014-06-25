@@ -1,6 +1,6 @@
 Feature: This should not run
 
 @dontRun
-Scenario: Should not run this feature or scenario @dontRun
+Scenario: Should not run this feature or scenario
 
-    Given a page with title 'I shalt not run!'
+    Given a page with title 'Thou shalt not run!'
