@@ -5,10 +5,13 @@ var glob = require('glob')
 
 var run = function(config) {
 
-    var mocha = new Mocha({
+    var options = {
         timeout: config.timeout || 60000,
         reporter: 'spec'
-    })
+    }
+    if (config.bail) options.bail = true
+    
+    var mocha = new Mocha(options)
 
     var next = function() {
         mocha.run(function(failures) {

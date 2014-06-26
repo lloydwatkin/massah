@@ -17,6 +17,7 @@ module.exports = function(yargs) {
             grep: '@dontRun',
             invert: true
         },
+        bail: true,
         browserstack: { 
             user: yargs.argv['browserstack-user'] || process.env.BROWSERSTACK_USER,
             key: yargs.argv['browserstack-key'] || process.env.BROWSERSTACK_KEY,
