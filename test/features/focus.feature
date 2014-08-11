@@ -1,3 +1,4 @@
+@Pending
 Feature: Focus test
 
 Background:
