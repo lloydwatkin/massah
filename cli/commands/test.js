@@ -46,5 +46,6 @@ module.exports = function(yargs) {
             'Error loading test suite:\n'.red +
             error.message.red
         )
+        process.exit(1)
     }
 }
