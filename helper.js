@@ -95,6 +95,7 @@ var startServer = function(done) {
             .usingServer(runOptions.serverAddress)
             .withCapabilities(capabilities)
             .build()
+        browser.window().maximize()
         browser.manage().timeouts().implicitlyWait(1000)
         done(browser)
     })
