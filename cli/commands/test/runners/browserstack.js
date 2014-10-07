@@ -41,20 +41,23 @@ var beforeSuite = function(options, done) {
         console.log('Missing Browserstack key'.red)
         process.exit(1)
     }
-    var binOptions = [
-        ' -only ',
+    var binOptions =  [
         /* '-localIdentifier="' + identifier + '" ', */
+        /* '-only', */
         options.browserstack.key,
         'localhost,' + options.applicationPort + ',0'
     ]
+
     childProcess = spawn(bin, binOptions)
     childProcess.stderr.on('data', function (data) {
       if (/^execvp\(\)/.test(data)) {
           console.log('Failed to start BrowserStack local daemon'.red)
           console.log(data.toString().red)
+          childProcess.kill()
           process.exit(1)
       }
       console.log('Error with browserstack local: ' + data.toString().red)
+      childProcess.kill()
     })
     childProcess.stdout.on('data', function (data) { 
         if (-1 !== data.toString().indexOf('Press Ctrl-C to exit')) {
@@ -63,6 +66,7 @@ var beforeSuite = function(options, done) {
         if (-1 !== data.toString().indexOf('Error:')) {
             console.log('Could not start browserstacklocal'.red)
             console.log(data.toString().red)
+            childProcess.kill()
             process.exit(1)
         }
     })
