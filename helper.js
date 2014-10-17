@@ -5,6 +5,7 @@ var Yadda = require('yadda')
   , path = require('path')
   , uname = require('uname').uname
   , extend = require('extend')
+  , log = require('debug')('massah-helper')
 
 require('webdriverjs-helper')
 
@@ -160,8 +161,10 @@ var getLibrary = function(dictionary) {
 
 var setOption = function(name, value) {
     if (typeof name === 'object') {
+        log('Bulk setting run options: ' + JSON.stringify(name))
         return runOptions = extend(runOptions, name)
     }
+    log('Setting run option (' + name + '): ' + value)
     runOptions[name] = value
 }
 

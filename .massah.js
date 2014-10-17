@@ -18,6 +18,10 @@ module.exports = function(yargs) {
             invert: true
         },
         bail: true,
+        split: {
+            runner: yargs.argv['split-runner'] || process.env.MASSAH_SPLIT_RUNNER || 0,
+            total: yargs.argv['split-total'] || process.env.MASSAH_SPLIT_TOTAL || 0,
+        },
         browserstack: { 
             user: yargs.argv['browserstack-user'] || process.env.BROWSERSTACK_USER,
             key: yargs.argv['browserstack-key'] || process.env.BROWSERSTACK_KEY,

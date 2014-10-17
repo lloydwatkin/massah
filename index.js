@@ -21,7 +21,24 @@ var loadStepDefinitions = function() {
 var stepDefinitions = loadStepDefinitions()
 
 var featuresPath = process.cwd() + '/test/features'
+
+var fileNumber = 0
+
+var splitTests = helper.getOption('split')
+splitTests.runner = parseInt(splitTests.runner)
+
 new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
+    
+    ++fileNumber
+
+    
+    if (splitTests.total) {
+        if (fileNumber % splitTests.total !== (splitTests.runner - 1)) {
+            return
+        }
+        log('Feature file \'' + file + '\' being run by runner ' + splitTests.runner)
+    }
+
     featureFile(file, function(feature) {
         
         if (false === runThisTest(feature.annotations, feature.title)) return

@@ -242,6 +242,14 @@ For long running tests you may want garbage collection to be forced so you don't
 node --enable-gc ./node_modules/massah/bin/massah-gc
 ```
 
+## Splitting tests
+
+If tests are taking too long to run, or you are running into memory/gc issues it is possible to split the tests down by feature file. In order to do this we set a total number of runners and the number of the current runner (starting from 1). These values can be set in your `.massah.js` file as per [this example](https://github.com/lloydwatkin/massah/blob/master/.massah.js#L21-L24).
+
+```bash
+MASSAH_SPLIT_TOTAL=5 MASSAH_SPLIT_RUNNER=2 massah test
+```
+
 # Testing
 
 To test __Massah__, simply run
