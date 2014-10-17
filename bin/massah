@@ -1,4 +1,4 @@
-#!/usr/bin/node --expose-gc
+#! /usr/bin/node --expose-gc
 
 var glob = require('glob')
   , colours = require('colours')
