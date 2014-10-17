@@ -250,6 +250,8 @@ If tests are taking too long to run, or you are running into memory/gc issues it
 MASSAH_SPLIT_TOTAL=5 MASSAH_SPLIT_RUNNER=2 massah test
 ```
 
+__Note:__ **@Only** annotation won't really work as expected if using split.
+
 # Testing
 
 To test __Massah__, simply run
