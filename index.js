@@ -2,6 +2,7 @@ var helper = require('./helper')
   , Yadda = helper.Yadda
   , fs = require('fs')
   , glob = require('glob')
+  , log = require('debug')('massah-index')
 
 Yadda.plugins.mocha.AsyncStepLevelPlugin.init()
 
@@ -60,7 +61,14 @@ new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
         })
 
         after(function(done) {
-            afterFeature(done)
+            afterFeature(function() {
+                if (global && global.gc) {
+                    log('Garbage collecting')
+                    global.gc()
+                }
+                done()
+            })
+            
         })
         
         before(function(done) {

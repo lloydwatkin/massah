@@ -34,17 +34,18 @@
     "massah": "./bin/massah"
   },
   "dependencies": {
+    "colours": "0.X",
+    "debug": "^2.1.0",
+    "extend": "1.X",
+    "glob": "3.X",
+    "headless": "0.X",
     "mocha": "1.X",
+    "selenium-webdriver": "~2.43.X",
+    "should": "3.X",
+    "uname": "0.0.X",
     "webdriverjs-helper": "~1.X",
     "yadda": "^0.10.13",
-    "selenium-webdriver": "~2.43.X",
-    "glob": "3.X",
-    "should": "3.X",
-    "yargs": "1.X",
-    "colours": "0.X",
-    "headless": "0.X",
-    "uname": "0.0.X",
-    "extend": "1.X"
+    "yargs": "1.X"
   },
   "author": {
     "name": "Lloyd Watkin"
