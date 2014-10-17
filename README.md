@@ -239,7 +239,7 @@ a string or a ```RegExp``` object. When using strings annotations are checked us
 For long running tests you may want garbage collection to be forced so you don't experience long (potentially timing out pauses).  To do this you'll need to run the special garbage collection method. Install `massah` to your project rather than locally and then run:
 
 ```bash
-node --enable-gc ./node_modules/.bin/massah-gc
+node --enable-gc ./node_modules/massah/bin/massah-gc
 ```
 
 # Testing
