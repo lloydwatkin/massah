@@ -232,6 +232,16 @@ Tests can be skipped by adding the __@Pending__ annotation.
 You can grep (or inverse grep for tests using your ```.massah.js``` file), see [this example](https://github.com/lloydwatkin/massah/blob/master/.massah.js#L16-L19). The grep can be in the form of 
 a string or a ```RegExp``` object. When using strings annotations are checked using a strict match.
 
+# Advanced
+
+## Running tests with garbage collection enabled
+
+For long running tests you may want garbage collection to be forced so you don't experience long (potentially timing out pauses).  To do this you'll need to run the special garbage collection method. Install `massah` to your project rather than locally and then run:
+
+```bash
+node --enable-gc ./node_modules/.bin/massah-gc
+```
+
 # Testing
 
 To test __Massah__, simply run
