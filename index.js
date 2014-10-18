@@ -24,7 +24,7 @@ var featuresPath = process.cwd() + '/test/features'
 
 var fileNumber = 0
 
-var splitTests = helper.getOption('split')
+var splitTests = helper.getOption('split') || {}
 splitTests.runner = parseInt(splitTests.runner)
 
 new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
