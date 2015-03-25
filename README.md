@@ -165,7 +165,7 @@ var massah = require('massah/helper')
 module.exports = (function() {
     var library = massah.getLibrary()
         .given('I visit http://google.co.uk', function() {
-            this.driver.get('http://google.co.uk)
+            this.driver.get('http://google.co.uk')
         })
         .when('I search for \'(.*)\'', function(searchTerm) {
             this.params.searchTerm = searchTerm
