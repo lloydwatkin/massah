@@ -78,20 +78,27 @@ new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
         })
 
         after(function(done) {
+            console.log('Running after')
             afterFeature(function() {
+                console.log('Running afterFeature')
                 if (global && global.gc) {
                     log('Garbage collecting')
                     global.gc()
                 }
+                
+                console.log('Calling done')
                 done()
             })
             
         })
         
         before(function(done) {
+            console.log('Running before')
             helper.application.start(function(app) {
+                console.log('Running start-done')
                 application = app
                 helper.getBrowser(function(browser) {
+                  console.log('Got browser')
                   driver = browser
                   done()
                 })
@@ -155,9 +162,13 @@ function takeScreenshotOnFailure(test) {
 }
 
 var afterFeature = function(done) {
+    console.log('Running afterFeature fn')
     if (!driver)
         return helper.application.stop(done)
+        
+    console.log('Quitting driver')
     driver.quit().then(function() {
+        console.log('Driver quit')
         helper.application.stop(done)
     })
 }
