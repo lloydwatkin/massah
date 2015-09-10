@@ -7,7 +7,7 @@ var run = function(config) {
 
     var options = {
         timeout: config.timeout || 60000,
-        reporter: 'spec'
+        reporter: config.reporter || 'spec'
     }
     if (config.bail) options.bail = true
     

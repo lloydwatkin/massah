@@ -12,6 +12,7 @@ module.exports = function(yargs) {
 
     return {
         runner: yargs.argv.runner || process.env.MASSAH_RUNNER || 'vanilla',
+        reporter: yargs.argv.reporter || process.env.MASSAH_REPORTER || 'spec',
         headless: false,
         match: {
             grep: '@dontRun',
