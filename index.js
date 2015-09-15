@@ -83,7 +83,6 @@ new Yadda.FeatureFileSearch(featuresPath).each(function(file) {
                     log('Garbage collecting')
                     global.gc()
                 }
-                
                 done()
             })
             
@@ -158,7 +157,6 @@ function takeScreenshotOnFailure(test) {
 var afterFeature = function(done) {
     if (!driver)
         return helper.application.stop(done)
-        
     driver.quit().then(function() {
         helper.application.stop(done)
     })
