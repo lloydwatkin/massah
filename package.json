@@ -34,7 +34,7 @@
     "massah": "./bin/massah"
   },
   "dependencies": {
-    "colours": "0.X",
+    "colours": "^0.6.0-2",
     "debug": "^2.1.0",
     "extend": "1.X",
     "glob": "3.X",
