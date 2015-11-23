@@ -5,6 +5,7 @@ language: node_js
 node_js:
   - "4.2"
   - "stable"
+sudo: false
 env:
   global:
     - secure: ' xamehQRWs1e8tPHaP624+9mxpVOqCP/P/RSOJpAdwlwdhSdbHMwuRKW+ZkrJTxZSNb51Yx5POKrrZVRbE2UJ7+67UHobC2hjputjw3psxz8lMW1dCdRpFhfgXotdeo3pcdjtFwG4e+LpKN3xApcHHAqGvJIuOPwdKaCmPEN1HHg='
