@@ -4,7 +4,7 @@
   "description": "BDD-style automated browser testing in node.js made very easy",
   "main": "index.js",
   "scripts": {
-    "test": "mkdir -p node_modules/massah && rsync -av --progress . ./node_modules/massah --exclude node_modules 1>/dev/null && npm rebuild 1>/dev/null && node --expose-gc ./bin/massah-gc test"
+    "test": "mkdir -p node_modules/massah && rsync -av --progress . ./node_modules/massah --exclude node_modules 1>/dev/null && npm rebuild 1>/dev/null && node --expose-gc ./bin/massah test"
   },
   "repository": {
     "type": "git",
@@ -42,7 +42,7 @@
     "mocha": "1.X",
     "selenium-webdriver": "~2.43.X",
     "should": "3.X",
-    "uname": "0.0.X",
+    "uname2": "^1.0.2",
     "webdriverjs-helper": "~1.X",
     "yadda": "^0.10.13",
     "yargs": "1.X"

@@ -3,7 +3,7 @@ var Yadda = require('yadda')
   , should = require('should')
   , headless = require('headless')
   , path = require('path')
-  , uname = require('uname').uname
+  , uname = require('uname2')
   , extend = require('extend')
   , log = require('debug')('massah-helper')
 
@@ -38,7 +38,7 @@ var getBrowser = function(done) {
 var addChromeDriverToPath = function() {
     var envPath = process.env.PATH.split(path.delimiter)
     var arch = ('x64' === process.arch) ? 'x86_64' : 'i386'
-    var system = uname().sysname
+    var system = uname.sysname()
     var chromeDriverPath = __dirname +
         '/resources/chromedriver/' +
         system + '-' + arch
