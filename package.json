@@ -40,10 +40,10 @@
     "glob": "3.X",
     "headless": "0.X",
     "mocha": "1.X",
-    "selenium-webdriver": "~2.43.X",
+    "selenium-webdriver": "~2.53.X",
     "should": "3.X",
     "uname2": "^1.0.2",
-    "webdriverjs-helper": "~1.X",
+    "webdriverjs-helper": "~3.X",
     "yadda": "^0.10.13",
     "yargs": "1.X"
   },
