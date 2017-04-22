@@ -35,7 +35,7 @@ Thanks to [Browserstack](http://www.browserstack.com) for a FREE basic account i
 __Massah__ is essentially a wrapper around the following projects just making things a few steps easier for developers to run up a BDD-style automated browser testing setup.
 
 - [Yadda](https://github.com/acuminous/yadda)
-- [Mocha](http://visionmedia.github.io/mocha/)
+- [Mocha](http://mochajs.org/)
 - [Should](https://github.com/visionmedia/should.js/)
 - [selenium-webdriver](https://code.google.com/p/selenium/)
 - [webdriverjs-helper](https://github.com/surevine/webdriverjs-helper)
