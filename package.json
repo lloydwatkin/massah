@@ -39,7 +39,7 @@
     "extend": "1.X",
     "glob": "3.X",
     "headless": "0.X",
-    "mocha": "1.X",
+    "mocha": "3.5.0",
     "selenium-webdriver": "~2.53.X",
     "should": "3.X",
     "uname2": "^1.0.2",
