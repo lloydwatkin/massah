@@ -4,7 +4,9 @@
   "description": "BDD-style automated browser testing in node.js made very easy",
   "main": "index.js",
   "scripts": {
-    "test": "mkdir -p node_modules/massah && rsync -av --progress . ./node_modules/massah --exclude node_modules 1>/dev/null && npm rebuild 1>/dev/null && node --expose-gc ./bin/massah test"
+    "test": "mkdir -p node_modules/massah && rsync -av --progress . ./node_modules/massah --exclude node_modules 1>/dev/null && npm rebuild 1>/dev/null && node --expose-gc ./bin/massah test",
+    "snyk-protect": "snyk protect",
+    "prepublish": "npm run snyk-protect"
   },
   "repository": {
     "type": "git",
@@ -45,7 +47,8 @@
     "uname2": "^1.0.2",
     "webdriverjs-helper": "~3.X",
     "yadda": "^0.10.13",
-    "yargs": "1.X"
+    "yargs": "1.X",
+    "snyk": "^1.41.1"
   },
   "author": {
     "name": "Lloyd Watkin"
@@ -54,5 +57,6 @@
   "bugs": {
     "url": "https://github.com/lloydwatkin/massah/issues"
   },
-  "homepage": "https://github.com/lloydwatkin/massah"
+  "homepage": "https://github.com/lloydwatkin/massah",
+  "snyk": true
 }
