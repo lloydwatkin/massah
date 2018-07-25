@@ -36,7 +36,7 @@
   "dependencies": {
     "colours": "^0.6.0-2",
     "debug": "^2.1.0",
-    "extend": "1.X",
+    "extend": "2.0.2",
     "glob": "3.X",
     "headless": "0.X",
     "mocha": "1.X",
